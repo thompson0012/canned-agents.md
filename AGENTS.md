@@ -29,6 +29,7 @@ At the very beginning of EVERY session, read (in this exact order):
 9. FRONTEND_GUIDELINES.md     (component rules, patterns, folder conventions)
 10. BACKEND_STRUCTURE.md      (API shape, data models, persistence rules)
 11. MEMORY.md                 (long-term architectural notes, decisions log)
+12. GUIDELINES.md             (how to write & maintain all other docs)
 
 After reading everything:
 • Write or update tasks/todo.md with the concrete plan for THIS session
