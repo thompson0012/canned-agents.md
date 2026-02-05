@@ -14,6 +14,19 @@
 
 <document_specific_guidelines>
 
+## progress.txt (Session / Project State Log)
+- **Purpose** — Carry-over lightweight state between sessions (what's done, in progress, blocked, quick notes).
+- **Format** — Plain text, **not** full Markdown. Keep it short (< 30–50 lines ideally).
+- **Structure** (loose, but consistent):
+  - Current date / session summary at top
+  - ## Completed This Session
+  - ## Still In Progress / Next Up
+  - ## Blockers / Open Questions
+  - ## Quick Notes / Metrics (bundle size change, perf numbers, etc.)
+- **When to update** — At end of **every** meaningful session or task batch.
+- **Tone** — Telegraphic, bullet-heavy, developer shorthand. No fluff.
+
+  
 ## PRD.md / PRODUCT.md (Product Requirements Document)
 - **Purpose** — Single source of truth for what the product should do, why, and for whom.
 - **Structure** (use these headings exactly):
@@ -78,12 +91,37 @@
   - Use simple text-based diagrams (ASCII or Mermaid if supported).
 - **Updates** — when UX changes or new flows added.
 
-## FRONTEND_GUIDELINES.md / BACKEND_STRUCTURE.md / etc.
-- **Purpose** — Stack-specific patterns & conventions.
-- **Structure** — Mirror coding_standards in agents.md but deeper (examples, do/don't tables).
-- **Updates** — when new patterns emerge or old ones break.
+## FRONTEND_GUIDELINES.md & BACKEND_STRUCTURE.md (Stack-Specific Deep Conventions)
+- **Purpose** — Deeper, example-heavy rules that don't fit in agents.md coding_standards
+- **Structure** (recommended):
+  1. ## Preferred Patterns — with short code examples
+  2. ## Do / Don't Table
+  3. ## Folder & Naming Conventions
+  4. ## Common Gotchas & Anti-patterns
+  5. ## Example Files — inline snippets or @ references
+- **Rule** — Keep examples short & focused. Update only when new patterns are deliberately adopted.
 
+## tasks/todo.md (Session & Medium-term Task List)
+- **Purpose** — Concrete, actionable checklist for current session + carry-over small tasks.
+- **Structure**:
+  - Use Markdown task lists: - [ ] / - [x]
+  - Group by phase or priority (## High Priority, ## This Session, ## Later)
+  - Each item: brief description + file(s) impacted + acceptance criteria if non-trivial
+- **When to update** — At session start (generate plan), during session (check off), end (carry over unfinished)
+- **Rule** — Keep realistic — 5–12 items max per session.
 </document_specific_guidelines>
+
+## MEMORY.md (Long-term Architectural / Decision Log)
+- **Purpose** — Stable, rarely changing knowledge that outlives current implementation phase (big design decisions, adopted patterns, historical why's).
+- **Difference from LESSONS.md** — LESSONS is mistake-driven & corrective; MEMORY is positive & foundational (architecture rationale, chosen trade-offs, domain models).
+- **Structure**:
+  1. ## Architectural Decisions — ADR-style: Decision | Date | Status | Rationale | Alternatives Considered
+  2. ## Adopted Patterns — e.g. "We use Railway-Oriented Programming for result handling because..."
+  3. ## Domain Glossary — Key terms & distinctions (e.g. "Order vs Reservation")
+  4. ## Historical Context — Why we didn't choose X (if still relevant)
+- **When to update** — After major refactors, tech pivots, or when user explicitly wants something preserved long-term.
+- **Rule** — Only add after user confirmation — this file should stay very stable.
+
 
 <update_protocol>
 1. When proposing changes: output the **full updated file** with changes highlighted (e.g., ```diff``` or bold new sections).
