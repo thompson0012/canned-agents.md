@@ -1,5 +1,5 @@
 # guidelines.md ─ How to Write & Maintain Project Documentation
-# Last meaningfully updated: 2026-XX-XX
+# Last meaningfully updated: 2026-02-05
 # Purpose: Teach the coding agent exactly how to create, update, and structure every key document referenced in agents.md.
 # Rules here are LAW — follow them precisely when writing or proposing changes to any .md file.
 
