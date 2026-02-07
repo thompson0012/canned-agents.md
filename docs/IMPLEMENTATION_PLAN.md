@@ -1,26 +1,66 @@
-<!-- TEMPLATE: This is a canned template for AI agent documentation kits. Replace placeholders with project-specific content. -->
+# IMPLEMENTATION_PLAN.md — Technical Roadmap
 
-# IMPLEMENTATION_PLAN.md
+**Purpose**: This document tracks the phased execution of the project. It provides a locked roadmap of tasks, architectural decisions, and verification steps.
 
 ## Current Milestone
-{{MILESTONE_NAME}} - {{DEADLINE}}
+
+**Purpose**: Define the immediate focus and deadline.
+
+**Example**:
+MVP Launch - February 28, 2026
 
 ## Phases
-1. {{PHASE_1}} ({{EFFORT_SML}})
-2. {{PHASE_2}} ({{EFFORT_SML}})
+
+**Purpose**: Break the project into logical, sequential phases.
+
+**Example**:
+1. Foundation (Infra, Auth, DB) - *Medium Effort*
+2. Core Features (Messaging, Project Management) - *Large Effort*
+3. Polishing & Optimization (UI/UX, Performance) - *Small Effort*
 
 ## Open Decisions
+
+**Purpose**: Track pending architectural or product decisions that impact the implementation.
+
 | Decision | Options | Chosen | Reason |
 |----------|---------|--------|--------|
-| {{DECISION_1}} | {{OPTIONS}} | {{CHOSEN}} | {{REASON}} |
+| Database Selection | PostgreSQL vs. MongoDB | PostgreSQL | Strong relational integrity and robust support for JSONB. |
+| Styling Strategy | Tailwind vs. CSS Modules | Tailwind | Faster development cycle and consistent utility patterns. |
 
 ## Task Breakdown
-### Phase 1: {{PHASE_1_NAME}}
-- [ ] {{TASK_1}}
-- [ ] {{TASK_2}}
+
+**Purpose**: Detailed, atomic checklist of tasks for each phase.
+
+### Phase 1: Foundation
+- [ ] Initialize project repository and CI/CD pipelines.
+- [ ] Implement user authentication (Sign-up, Login, Logout).
+- [ ] Set up database schema and initial migrations.
+
+**Verification**:
+- [ ] All unit tests pass (`npm test`).
+- [ ] Authentication flow verified via manual UI check.
+- [ ] Database connection established and migrations applied successfully.
 
 ## Dependencies & Blockers
-- {{DEPENDENCY_1}} ({{STATUS}})
+
+**Purpose**: Identify external factors or internal tasks that prevent progress.
+
+**Example**:
+- Deployment blocked by final approval of infrastructure budget. (Status: Pending)
+- Integration with third-party API requires API key from the user. (Status: Blocked)
 
 ## Risks & Mitigations
-- {{RISK_1}} -> {{MITIGATION_1}}
+
+**Purpose**: Anticipate potential issues and define strategies to handle them.
+
+**Example**:
+- **Risk**: Potential performance bottlenecks with high concurrent WebSocket connections.
+- **Mitigation**: Implement horizontal scaling for WebSocket servers and use a Redis-backed message broker.
+
+## Version Control Workflow
+
+**Guidance**:
+- **Atomic Commits**: Commit each task separately to maintain a clean history.
+- **Verification First**: Do not commit code that fails local tests or linting.
+- **PR Summary**: Include a "Verification" section in PR descriptions to show evidence of testing.
+

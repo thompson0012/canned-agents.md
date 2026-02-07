@@ -1,37 +1,84 @@
-<!-- TEMPLATE: This is a canned template for AI agent documentation kits. Replace placeholders with project-specific content. -->
+# PRD.md — Product Requirements Document
 
-# PRD.md
+**Purpose**: This document serves as the single source of truth for the product's vision, goals, and requirements. It should be used to align all stakeholders and guide the technical implementation.
 
 ## Overview
-{{PRODUCT_SUMMARY}}
+
+**Purpose**: A high-level summary of the product's core value proposition and target audience.
+
+**Example**:
+A secure, real-time collaboration platform for distributed engineering teams that integrates with existing version control systems and provides automated project health insights.
 
 ## Goals & Success Metrics
-- {{GOAL_1}}
-- {{KPI_1}}
+
+**Purpose**: Define measurable outcomes that determine the product's success.
+
+**Example**:
+- **Goal**: Achieve sub-200ms API response time for all core endpoints.
+- **KPI**: 95th percentile latency remains below 200ms under 100 concurrent users.
+- **Goal**: Ensure high accessibility compliance.
+- **KPI**: Zero critical violations in WCAG 2.1 AA audits.
 
 ## User Personas
-1. {{PERSONA_1}}: {{NEEDS_PAIN_POINTS}}
+
+**Purpose**: Describe the primary users and their specific needs or pain points.
+
+**Example**:
+1. **Senior Developer**: Needs automated tools to reduce manual code review time and ensure consistency across the team.
+2. **Project Manager**: Requires clear visibility into project progress and potential blockers without needing to read code.
 
 ## Features & Requirements
+
 ### Must-Have
-- {{FEATURE_1}}
+**Purpose**: Non-negotiable features required for a minimum viable product (MVP).
+
+**Example**:
+- User authentication and authorization.
+- Real-time message broadcasting via WebSockets.
 
 ### Should-Have
-- {{FEATURE_2}}
+**Purpose**: Important features that add significant value but are not critical for the initial launch.
+
+**Example**:
+- Automated daily activity summaries.
+- Search functionality across historical messages.
 
 ### Could-Have
-- {{FEATURE_3}}
+**Purpose**: "Nice to have" features that can be implemented if time and resources permit.
+
+**Example**:
+- Custom theme support for the user interface.
+- Integration with third-party calendar services.
 
 ### Won't-Have (for now)
-- {{FEATURE_4}}
+**Purpose**: Features explicitly excluded from the current scope to prevent scope creep.
+
+**Example**:
+- Native mobile applications (initial focus is web-only).
+- Support for on-premise deployments.
 
 ## Non-Functional Requirements
-- {{PERFORMANCE}}
-- {{SECURITY}}
-- {{ACCESSIBILITY}}
+
+**Purpose**: Constraints on the system's operation, such as performance, security, and accessibility.
+
+**Example**:
+- **Performance**: The system should support up to 1,000 concurrent WebSocket connections.
+- **Security**: All data at rest must be encrypted using AES-256.
+- **Accessibility**: Support for screen readers and keyboard-only navigation.
 
 ## Assumptions & Risks
-- {{ASSUMPTION_1}}
+
+**Purpose**: Explicitly state any assumptions made during planning and identify potential risks.
+
+**Example**:
+- **Assumption**: Users have a stable internet connection for real-time features.
+- **Risk**: Potential latency issues if the chosen WebSocket provider experiences downtime.
 
 ## Out of Scope
-- {{OUT_OF_SCOPE_ITEM}}
+
+**Purpose**: Clearly define what the product will NOT do to maintain focus.
+
+**Example**:
+- Direct billing or payment processing (handled by a separate service).
+- Comprehensive project management features (focus is on collaboration).
+

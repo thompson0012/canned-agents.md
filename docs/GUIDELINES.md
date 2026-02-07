@@ -1,114 +1,71 @@
-<!-- TEMPLATE: This is a canned template for AI agent documentation kits. Replace placeholders with project-specific content. -->
-
 # GUIDELINES.md — How to Write & Maintain Project Documentation
 
-_Purpose: Teach the coding agent exactly how to create, update, and structure every key document referenced in `AGENTS.md`._
+**Purpose**: This document provides supporting guidance for AI agents on how to create, update, and structure the key documents referenced in `AGENTS.md`. 
 
-## General principles
+*Note: This is a supporting guide. Canonical rules reside in `AGENTS.md`.*
 
-- Keep documents concise yet complete — aim for clarity over length.
-- Use Markdown with semantic headings (`##`, `###`), bullet lists, code blocks, tables, and XML-like tags only when they improve readability.
-- Version control everything — commit changes with descriptive messages.
-- Traceability — every statement should be grounded in reality (code, user requirements, decisions). No hallucinations.
-- Human review gate — after proposing major updates to any doc, always wait for user approval before considering it final.
-- Iterate ruthlessly — after every correction or new insight, propose precise updates to the relevant file.
+## General Principles
 
-## Document-specific guidelines
+- **Conciseness**: Documents should be concise yet complete, aiming for clarity over length.
+- **Formatting**: Use Markdown with semantic headings (`##`, `###`), bullet lists, and tables to improve readability.
+- **Version Control**: Changes should be committed with descriptive, atomic messages.
+- **Traceability**: Statements should be grounded in the codebase, requirements, or recorded decisions.
+- **Approval**: Major updates to any document should be proposed to the user for approval.
+- **Iteration**: Documents should be updated as new insights or corrections occur.
 
-### PROGRESS.md (Session / Project State Log)
-- Purpose — Carry-over lightweight state between sessions.
-- Structure:
-  - Current date / session summary at top
-  - `## Completed This Session`
-  - `## Still In Progress / Next Up`
-  - `## Blockers / Open Questions`
-  - `## Quick Notes / Metrics`
-- Tone — Telegraphic, bullet-heavy, developer shorthand.
+## Version Control Workflow
 
-### PRD.md (Product Requirements Document)
-- Purpose — Single source of truth for what the product should do, why, and for whom.
-- Structure:
-  1. `## Overview`
-  2. `## Goals & Success Metrics`
-  3. `## User Personas`
-  4. `## Features & Requirements` (MoSCoW)
-  5. `## Non-Functional Requirements`
-  6. `## Assumptions & Risks`
-  7. `## Out of Scope`
+Guidance for maintaining a clean and traceable project history:
+
+- **Atomic Commits**: Each commit should represent a single, logical change.
+- **Message Format**: Prefer `type(scope): description` (e.g., `feat(auth): add login form validation`).
+- **PR Hygiene**: Pull requests should include a clear summary of changes and reference relevant tasks or issues.
+
+## Document-Specific Guidance
+
+### PROGRESS.md (Session State Log)
+- **Purpose**: Lightweight state carry-over between sessions.
+- **Structure Recommendation**:
+  - Session summary and date at the top.
+  - Sections for Completed, In Progress, Blockers, and Quick Notes.
+- **Example**: "Finished API integration for user profiles; blocking on database migration script."
+
+### PRD.md (Product Requirements)
+- **Purpose**: Single source of truth for product goals and features.
+- **Structure Recommendation**: Overview, Goals/Metrics, Personas, Features (MoSCoW), and Non-Functional Requirements.
+- **Example Goal**: "Reduce page load time by 30% to improve user retention."
 
 ### IMPLEMENTATION_PLAN.md
-- Purpose — Locked roadmap of phases, tasks, and decisions.
-- Structure:
-  1. `## Current Milestone`
-  2. `## Phases`
-  3. `## Open Decisions`
-  4. `## Task Breakdown`
-  5. `## Dependencies & Blockers`
-  6. `## Risks & Mitigations`
+- **Purpose**: Roadmap for technical execution.
+- **Structure Recommendation**: Milestones, Phases, Open Decisions, and Task Breakdowns.
+- **Verification**: Each phase should include explicit verification steps (e.g., "Run unit tests", "Manual UI check").
 
-### LESSONS.md
-- Purpose — Prevent repeat mistakes; self-improvement log.
-- Structure:
-  - Date / Session
-  - Mistake / Issue
-  - Root Cause
-  - Rule to Prevent
-  - Example
+### LESSONS.md (Operational Patterns)
+- **Purpose**: Log of learned optimizations and avoided mistakes.
+- **Structure Recommendation**: Issue description, Root cause, and a pattern to prevent recurrence.
+- **Example**: "Avoided using global state for temporary form data; used local component state instead."
 
 ### TECH_STACK.md
-- Purpose — Exact versions and allowed tools/libraries.
-- Structure:
-  - `## Frontend`
-  - `## Backend`
-  - `## Database / Infra`
-  - `## Dev Tools`
-  - `## Prohibited / Deprecated`
+- **Purpose**: Documentation of versions and allowed tools.
+- **Discipline**: Use an "unknown until confirmed" approach for any tech stack assumptions.
 
-### DESIGN_SYSTEM.md
-- Purpose — Visual & interaction standards.
-- Structure:
-  - `## Tokens`
-  - `## Components`
-  - `## Motion & Accessibility`
-  - `## Icons & Assets`
+### SECURITY.md (Security Guidance)
+- **Purpose**: Defense-in-depth guidance for security-conscious development.
+- **Key Areas**: Secrets management, input validation, and safe coding patterns.
 
-### APP_FLOW.md
-- Purpose — High-level user journeys & screen flows.
-- Structure:
-  - `## Main Flows`
-  - `## Edge Cases & Errors`
-  - Use simple text-based diagrams (ASCII or Mermaid if supported).
+## Update Protocol
 
-### FRONTEND_GUIDELINES.md & BACKEND_STRUCTURE.md
-- Purpose — Deeper, example-heavy rules.
-- Structure:
-  1. `## Preferred Patterns`
-  2. `## Do / Don’t Table`
-  3. `## Folder & Naming Conventions`
-  4. `## Common Gotchas & Anti-patterns`
-  5. `## Example Files`
+1. Analyze the current state and identify necessary changes.
+2. Propose the updated content, clearly highlighting the modifications.
+3. Wait for explicit user approval before finalizing the update.
+4. Once approved, update the document and include a brief summary in the session log.
 
-### TASKS.md (Session & Medium-term Task List)
-- Purpose — Concrete, actionable checklist.
-- Structure:
-  - Use Markdown task lists: `- [ ]` / `- [x]`
-  - Group by phase or priority.
+## Writing Conventions
 
-### MEMORY.md (Long-term Architectural / Decision Log)
-- Purpose — Stable, rarely changing knowledge.
-- Structure:
-  1. `## Architectural Decisions` (ADR-style)
-  2. `## Adopted Patterns`
-  3. `## Domain Glossary`
-  4. `## Historical Context`
+- Use active voice and professional tone.
+- Avoid jargon unless it is part of the project's domain glossary.
+- Prefer tables for comparing options or listing tokens.
+- Keep examples practical and easy to follow.
 
-## Update protocol
-1. Propose full updated file with changes highlighted.
-2. Ask for approval.
-3. Confirm commitment.
+This document is now locked until the next approved change.
 
-## Core rules
-- Never invent content.
-- Consistent language & formatting.
-- Prefer tables and code blocks.
-- End update with: “This document is now locked until next approved change.”

@@ -1,19 +1,42 @@
-<!-- TEMPLATE: This is a canned template for AI agent documentation kits. Replace placeholders with project-specific content. -->
+# DESIGN_SYSTEM.md — Visual & Interaction Standards
 
-# DESIGN_SYSTEM.md
+**Purpose**: This document defines the visual and interaction standards for the project, ensuring consistency and high-quality UI/UX across all components.
 
 ## Tokens
-| Token | Value |
-|-------|-------|
-| {{COLOR_PRIMARY}} | {{VALUE}} |
-| {{SPACING_M}} | {{VALUE}} |
+
+**Purpose**: Define the foundational design values used to build the interface.
+
+| Token | Description | Value Example |
+|-------|-------------|---------------|
+| `color-primary` | Primary brand color. | `#3b82f6` (Blue-500) |
+| `color-surface` | Background color for cards and modals. | `#ffffff` (White) |
+| `spacing-base` | Base unit for all spacing. | `4px` |
+| `font-size-body` | Standard text size. | `16px` |
 
 ## Components
-- {{COMPONENT_NAME}}: {{USAGE_GUIDELINES}}
+
+**Purpose**: Guidelines for creating and using reusable UI components.
+
+- **Buttons**: Use primary variants for main actions and ghost/outline for secondary actions. Ensure a minimum touch target size of 44x44px.
+- **Inputs**: Always include a clear `<label>` and provide immediate validation feedback.
+- **Modals**: Use for focused tasks that require user attention. Ensure the modal can be closed via the `Esc` key.
 
 ## Motion & Accessibility
-- {{MOTION_RULES}}
-- {{A11Y_STANDARDS}}
+
+**Purpose**: Standards for animations and inclusive design.
+
+- **Motion**: Keep animations short (< 300ms) and purposeful. Support `prefers-reduced-motion` media queries to disable non-essential animations.
+- **Accessibility**:
+  - **Semantic HTML**: Use proper tags (`<nav>`, `<main>`, `<footer>`) to provide structure for screen readers.
+  - **ARIA**: Use ARIA attributes only when standard HTML elements are insufficient.
+  - **Keyboard Navigation**: All interactive elements should be reachable and operable using only the keyboard.
+  - **Contrast**: Maintain a minimum contrast ratio of 4.5:1 for standard text (WCAG 2.1 AA).
 
 ## Icons & Assets
-- {{ICON_LIBRARY}}
+
+**Purpose**: Guidance on selecting and managing visual assets.
+
+- **Icon Library**: Prefer SVG-based icon libraries (e.g., Lucide, Heroicons) for scalability and performance.
+- **Alt Text**: All meaningful images should have descriptive `alt` text. Use `alt=""` for purely decorative images.
+- **Performance**: Optimize all raster images (PNG, JPEG) using modern formats like WebP or Avif where supported.
+
