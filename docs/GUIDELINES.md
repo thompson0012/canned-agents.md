@@ -87,6 +87,16 @@ ROLLBACK / STOP CONDITIONS:
 - If [X] fails, do [Y] (revert, pause, escalate, ask for approval).
 ```
 
+### Plan & Task Recordkeeping (RECOMMENDED)
+
+If you want plans and task breakdowns to remain traceable across sessions, use the conventions in `docs/PLANS.md`.
+
+Recommended approach:
+- Keep the approved plan in a dated folder under `/docs/plans/.../plan.md`
+- Keep the plan’s atomic checklist in `/docs/plans/.../tasks.md`
+- Link to the plan folder from `docs/PROGRESS.md` (session timeline)
+- Avoid duplicating the same checklist in multiple places; prefer linking
+
 ### After Completing Work (RECOMMENDED)
 ```
 CHANGES MADE:

@@ -11,6 +11,9 @@
 
 **Focus**: Foundation - Authentication Implementation
 
+**Active Plan (optional)**:
+- Link: /docs/plans/YYYY-MM-DD_short-title/
+
 ## Completed This Session
 
 - [x] Initialized project repository with basic folder structure.

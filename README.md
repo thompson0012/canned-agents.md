@@ -59,6 +59,11 @@ It covers precise formats and rules for:
 
 ## How They Work Together
 
+- `AGENTS.md` is the constitution (highest priority rules).
+- `/docs/*` are supporting guides and project docs used as needed.
+- `docs/PROGRESS.md` carries session state forward.
+- If you want durable, linkable plan/task records across sessions, see `docs/PLANS.md`.
+
 ## AI Agent Activation Flow (ASCII)
 
 This section visualizes what happens when an AI agent is activated in this repo, how it decides what to read, how it plans work, where approvals happen, and how `AGENTS.md` and `/docs/*` interact.

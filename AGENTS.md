@@ -144,7 +144,8 @@ Consult these files in `/docs/` as needed:
 | File | When to consult |
 | :--- | :--- |
 | `PROGRESS.md` | To understand session state and history. |
-| `TASKS.md` | For the current session's atomic todo list. |
+| `PLANS.md` | For recommended conventions to store approved plans/tasks as durable artifacts. |
+| `TASKS.md` | For the current session's atomic todo list (may link to a plan’s `tasks.md`). |
 | `LESSONS.md` | To avoid repeating past mistakes. |
 | `GUIDELINES.md` | When creating/updating documentation. |
 | `TECH_STACK.md` | To verify versions and architecture. |
