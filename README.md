@@ -19,14 +19,15 @@ This is the **single source of truth** for how the AI agent should behave during
 It defines:
 
 - Role & mindset (executor, not architect)
-- Mandatory session startup ritual (reading key documents)
+- Risk-tiered session startup (lazy reading: Low/Normal/High)
 - Strict approval gates before writing any code
 - Protection rules (no regressions, no hallucinations, no unsolicited refactors)
 - Security & prompt-injection defenses
 - Coding standards (match existing codebase first!)
 - Testing & bug-fixing rituals (test-first bug reproduction)
-- Self-improvement loop (every correction → new permanent rule)
-- Communication format & completion checklist
+- Self-improvement protocol (corrections become permanent rules via §4.7)
+- Documentation evolution protocol (structured update process via §4.7)
+- Completion checklist & escalation criteria
 
 **Key philosophy**  
 > You are the hands. The user is the architect.  

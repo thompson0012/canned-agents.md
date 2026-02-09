@@ -53,12 +53,27 @@ Guidance for maintaining a clean and traceable project history:
 - **Purpose**: Defense-in-depth guidance for security-conscious development.
 - **Key Areas**: Secrets management, input validation, and safe coding patterns.
 
-## Update Protocol
+## Communication Standards
 
-1. Analyze the current state and identify necessary changes.
-2. Propose the updated content, clearly highlighting the modifications.
-3. Wait for explicit user approval before finalizing the update.
-4. Once approved, update the document and include a brief summary in the session log.
+### Before Starting Work (REQUIRED)
+```
+ASSUMPTIONS I'M MAKING:
+- [Assumption 1 - let user correct before wasted work]
+- [Assumption 2]
+```
+
+### After Completing Work (REQUIRED)
+```
+CHANGES MADE:
+- [file/location]: [what changed and why]
+```
+
+### Proposing Documentation Updates
+When updating any document (per AGENTS.md §4.7):
+1. Analyze current state and identify necessary changes
+2. Propose using `PROPOSED DOC UPDATE` format (see AGENTS.md §4.7)
+3. Wait for explicit user approval
+4. Update and log summary in PROGRESS.md
 
 ## Writing Conventions
 

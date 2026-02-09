@@ -21,6 +21,7 @@ Adopt a **lazy, context-aware** reading strategy. Do not read all documents unle
 | **Low** | < 5 files, no auth/data changes, mechanical fixes. | `AGENTS.md`, `/docs/PROGRESS.md`, target files. |
 | **Normal** | Default work, new features, UI changes. | Tier 1 + `IMPLEMENTATION_PLAN.md`, `TECH_STACK.md`. |
 | **High** | Auth, Payments, Data deletion, > 5 files, Infra. | Tier 2 + `SECURITY.md`, full ritual (all docs). |
+| **Recovery** | Referenced doc missing. | Stop. Ask: "Scaffold [doc] or use safe defaults?" |
 
 **Missing-Doc Protocol**: If a referenced doc is missing, stop and notify. Ask to scaffold or proceed with safe defaults. **Never hallucinate content.**
 
@@ -49,7 +50,42 @@ Priority (Highest to Lowest):
 
 **Stopping Criteria**: Stop when the plan is complete, a dependency is missing, scope shifts, or an architect-level decision is required.
 
-## 5. Protection & Security
+### 4.7 Documentation Evolution Protocol
+
+When any document (including this one) needs updating:
+
+1. **STOP and DECLARE**: "I notice [doc] needs update: [reason]"
+2. **PROPOSE using this format**:
+   ```
+   PROPOSED DOC UPDATE to [filename]:
+   
+   OLD:
+   [exact quoted section]
+   
+   NEW:
+   [proposed change]
+   
+   REASON: [why this improves accuracy/clarity]
+   ```
+3. **WAIT**: User approval required before any edit
+4. **UPDATE**: Make change only after explicit approval
+5. **LOG**: Record decision in `/docs/LESSONS.md`
+
+**NEVER silently edit documentation mid-session.**
+
+## 5. Self-Improvement Protocol
+
+When the user corrects you (wrong pattern, hallucination, bad decision):
+
+1. **Acknowledge**: "I made an error: [specific mistake]"
+2. **Propose Rule**: Draft a precise rule to prevent recurrence
+3. **Suggest Location**: Where to add it (AGENTS.md §X or /docs/LESSONS.md)
+4. **Wait for Approval**: Use Documentation Evolution Protocol (§4.7)
+5. **Update**: Once approved, update the document
+
+Every correction makes the system permanently better.
+
+## 6. Protection & Security
 
 - **No Regressions**: Verify existing behavior before/after changes.
 - **No Unsolicited Changes**: No "bonus" refactors or cleanup.
@@ -86,6 +122,9 @@ Consult these files in `/docs/` as needed:
 | `GUIDELINES.md` | When creating/updating documentation. |
 | `TECH_STACK.md` | To verify versions and architecture. |
 | `PRD.md` | To understand requirements and "why". |
+| `SECURITY.md` | For security patterns and defense-in-depth guidance (§2 High-risk tasks). |
+| `IMPLEMENTATION_PLAN.md` | For roadmap, milestones, architecture diagrams (§2 Normal+ tasks). |
+| `TEST_STRATEGY.md` | For testing standards, coverage targets, and test organization. |
 
 ## 8. Completion Checklist
 
