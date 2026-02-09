@@ -1,5 +1,7 @@
 # PROGRESS.md — Session & Project State Log
 
+> **TEMPLATE**: The session entries below are illustrative examples only. Replace with actual session logs before use.
+
 **Purpose**: This document provides a lightweight way to track progress and carry state between sessions. It should be updated at the end of every session.
 
 ## Session Summary: February 7, 2026

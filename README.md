@@ -42,16 +42,16 @@ This file teaches the agent **exactly how to write, structure, and update every 
 
 It covers precise formats and rules for:
 
-- PRD.md / PRODUCT.md
+- PRD.md
 - IMPLEMENTATION_PLAN.md
 - LESSONS.md (learned lessons & anti-patterns)
-- progress.txt
+- PROGRESS.md
 - TECH_STACK.md
 - DESIGN_SYSTEM.md
 - APP_FLOW.md
 - FRONTEND_GUIDELINES.md / BACKEND_STRUCTURE.md
 - MEMORY.md (long-term architectural decisions)
-- tasks/todo.md
+- TASKS.md
 
 **Key philosophy**  
 > Documentation must be concise, scannable, consistent, and version-controlled.  
@@ -59,10 +59,10 @@ It covers precise formats and rules for:
 
 ## How They Work Together
 
-1. At the start of **every session**, the agent is instructed (in `AGENTS.md`) to read:
-   - `AGENTS.md` (behavior rules)
-   - `GUIDELINES.md` (how to write docs)
-   - All other tracked documents (`progress.txt`, `LESSONS.md`, `IMPLEMENTATION_PLAN.md`, etc.)
+1. At the start of **every session**, the agent follows the **risk-tiered reading strategy** defined in `AGENTS.md` §2:
+   - **Always**: `AGENTS.md` (behavior rules) + `/docs/PROGRESS.md` (session state)
+   - **Normal+**: Adds `PRD.md`, `IMPLEMENTATION_PLAN.md`, `TECH_STACK.md`
+   - **High-risk**: Full reading of all files listed in the Documentation Map (§8)
 
 2. When the agent needs to **create or update any document**, it must follow the **exact structure and rules** defined in `GUIDELINES.md`.
 
@@ -89,7 +89,7 @@ This configuration is **not** invented from scratch. It is a **heavily synthesiz
 - **Anthropic Claude Code community** (especially shared `CLAUDE.md` templates on GitHub & X)
 
 - **Simon Willison** & **Cursor / Aider** power users  
-  → Emphasis on test-first bug fixing, progress.txt style state tracking
+  → Emphasis on test-first bug fixing, PROGRESS.md style state tracking
 
 - **Various high-signal GitHub repos** (especially Claude + Cursor + Windsurf setups with 100+ stars)
 
@@ -99,7 +99,7 @@ Special thanks to the many developers who openly shared their `CLAUDE.md` / `AGE
 
 ## How to Use This Setup
 
-1. Place `AGENTS.md` and `GUIDELINES.md` in your project root (or `/docs/`)
+1. Place `AGENTS.md` in your project root and supporting docs (including `GUIDELINES.md`) under `/docs/`
 2. In your AI coding tool (Claude Code, Cursor, Aider, etc.):
    - Set `AGENTS.md` as the **project instruction file** / **custom system prompt** / **memory file**
    - Or use `@AGENTS.md` in prompts

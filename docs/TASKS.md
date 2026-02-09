@@ -1,5 +1,7 @@
 # TASKS.md — Project & Session Task List
 
+> **TEMPLATE**: The tasks below are illustrative examples only. Replace with actual project tasks before use.
+
 **Purpose**: This document provides a concrete, actionable checklist of tasks grouped by priority or session. It should be used to track atomic progress and ensure no requirements are missed.
 
 ## High Priority

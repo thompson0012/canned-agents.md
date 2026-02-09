@@ -1,5 +1,7 @@
 # DESIGN_SYSTEM.md — Visual & Interaction Standards
 
+> **TEMPLATE**: The tokens, components, and guidelines below are illustrative examples only. Replace with actual design system values before use.
+
 **Purpose**: This document defines the visual and interaction standards for the project, ensuring consistency and high-quality UI/UX across all components.
 
 ## Tokens

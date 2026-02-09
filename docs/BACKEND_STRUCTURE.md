@@ -1,5 +1,7 @@
 # BACKEND_STRUCTURE.md — Backend Architecture & API Patterns
 
+> **TEMPLATE**: The patterns and code examples below are illustrative examples only. Adapt to your actual project's framework and conventions before use.
+
 **Purpose**: This document provides deeper, example-heavy rules for backend development, focusing on maintainable API patterns, data flow, and security.
 
 ## Preferred Patterns

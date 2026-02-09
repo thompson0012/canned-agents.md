@@ -55,7 +55,7 @@ Guidance for maintaining a clean and traceable project history:
 
 ## Communication Standards
 
-### Before Starting Work (REQUIRED)
+### Before Starting Work (RECOMMENDED)
 ```
 ASSUMPTIONS I'M MAKING:
 - [Assumption 1 - let user correct before wasted work]

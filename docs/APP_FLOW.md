@@ -1,5 +1,7 @@
 # APP_FLOW.md — High-Level User Journeys & Screen Flows
 
+> **TEMPLATE**: The user flows and diagrams below are illustrative examples only. Replace with actual application flows before use.
+
 **Purpose**: This document captures the primary user flows and interactions within the application to ensure a consistent and intuitive user experience.
 
 ## Main Flows

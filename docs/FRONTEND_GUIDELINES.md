@@ -1,5 +1,7 @@
 # FRONTEND_GUIDELINES.md — Frontend Development Standards
 
+> **TEMPLATE**: The patterns and code examples below are illustrative examples only. Adapt to your actual project's framework and conventions before use.
+
 **Purpose**: This document provides deeper, example-heavy rules for frontend development. It focuses on maintainable patterns, accessibility, and performance.
 
 ## Preferred Patterns

@@ -1,5 +1,7 @@
 # MEMORY.md — Long-Term Architectural & Decision Log
 
+> **TEMPLATE**: The entries below are illustrative examples only. Replace with actual project decisions, patterns, and context before use.
+
 **Purpose**: This document tracks the stable, rarely changing knowledge of the project. It serves as the long-term memory for architectural decisions, adopted patterns, and historical context.
 
 ## Architectural Decisions (ADR)

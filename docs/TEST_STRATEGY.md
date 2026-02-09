@@ -1,6 +1,6 @@
 # TEST_STRATEGY.md — Testing Standards & Strategy
 
-*Note: This is a supporting guide. Core testing rules reside in `AGENTS.md` §7 and §9.*
+*Note: This is a supporting guide. Core testing rules reside in `AGENTS.md` §4 (Error Protocol) and §7 (Engineering & Coding Standards — Test Default).*
 
 ## Test-First for Bugs (MANDATORY)
 
