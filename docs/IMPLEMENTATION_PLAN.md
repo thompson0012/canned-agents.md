@@ -24,6 +24,9 @@ MVP Launch - February 28, 2026
 
 **Purpose**: Track pending architectural or product decisions that impact the implementation.
 
+> **EXAMPLE ASSUMPTIONS**: The “Chosen” values below (e.g., PostgreSQL, Tailwind) are illustrative examples showing how to record decisions.
+> Replace them with your project’s actual choices (or mark as TBD) and keep them consistent with `TECH_STACK.md`.
+
 | Decision | Options | Chosen | Reason |
 |----------|---------|--------|--------|
 | Database Selection | PostgreSQL vs. MongoDB | PostgreSQL | Strong relational integrity and robust support for JSONB. |
@@ -55,6 +58,9 @@ MVP Launch - February 28, 2026
 
 **Purpose**: Anticipate potential issues and define strategies to handle them.
 
+> **EXAMPLE ASSUMPTIONS**: The examples below assume WebSocket-based real-time features and Redis for message brokering.
+> Replace with risks/mitigations that match your architecture.
+
 **Example**:
 - **Risk**: Potential performance bottlenecks with high concurrent WebSocket connections.
 - **Mitigation**: Implement horizontal scaling for WebSocket servers and use a Redis-backed message broker.
@@ -65,4 +71,3 @@ MVP Launch - February 28, 2026
 - **Atomic Commits**: Commit each task separately to maintain a clean history.
 - **Verification First**: Do not commit code that fails local tests or linting.
 - **PR Summary**: Include a "Verification" section in PR descriptions to show evidence of testing.
-

@@ -2,6 +2,9 @@
 
 > **TEMPLATE**: The session entries below are illustrative examples only. Replace with actual session logs before use.
 
+> **EXAMPLE ASSUMPTIONS**: The entries below reference specific technologies (React, Argon2, Docker Compose, PostgreSQL, Redis) as examples.
+> Replace with your actual stack and real session history; keep the structure (Completed / In Progress / Blockers / Notes) the same.
+
 **Purpose**: This document provides a lightweight way to track progress and carry state between sessions. It should be updated at the end of every session.
 
 ## Session Summary: February 7, 2026
@@ -48,4 +51,3 @@
 
 - [ ] Implement project initialization scripts.
 - [ ] Set up basic CI/CD pipeline using GitHub Actions.
-

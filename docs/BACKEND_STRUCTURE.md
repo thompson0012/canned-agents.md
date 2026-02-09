@@ -2,6 +2,9 @@
 
 > **TEMPLATE**: The patterns and code examples below are illustrative examples only. Adapt to your actual project's framework and conventions before use.
 
+> **EXAMPLE ASSUMPTIONS**: Examples use a TypeScript/Express-style controller and schema validation as illustration.
+> If your backend stack differs, keep the architecture intent (separation of concerns, validation, secure defaults) but rewrite examples to match your framework/runtime.
+
 **Purpose**: This document provides deeper, example-heavy rules for backend development, focusing on maintainable API patterns, data flow, and security.
 
 ## Preferred Patterns
@@ -56,4 +59,3 @@ async function createUser(req: Request, res: Response) {
 - **Secrets Management**: Never commit secrets to version control. Use environment variables or a secret management service.
 - **Input Validation**: Use a library like Zod or Joi to validate all incoming request data.
 - **Authentication/Authorization**: Ensure that all protected routes are properly authenticated and authorized based on user roles.
-

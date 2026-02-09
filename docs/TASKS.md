@@ -2,6 +2,9 @@
 
 > **TEMPLATE**: The tasks below are illustrative examples only. Replace with actual project tasks before use.
 
+> **EXAMPLE ASSUMPTIONS**: The sample tasks reference an “Authentication Module” and specific implementation details (e.g., Argon2).
+> Replace with your real backlog and ensure tasks align with your `PRD.md`, `IMPLEMENTATION_PLAN.md`, and `TECH_STACK.md`.
+
 **Purpose**: This document provides a concrete, actionable checklist of tasks grouped by priority or session. It should be used to track atomic progress and ensure no requirements are missed.
 
 ## High Priority
@@ -31,4 +34,3 @@
 - **Status Updates**: Use `- [ ]` for pending tasks and `- [x]` for completed ones.
 - **Traceability**: Link tasks to relevant entries in `IMPLEMENTATION_PLAN.md` or `PRD.md` where possible.
 - **Session Focus**: Clearly define the goals for the current session at the start.
-

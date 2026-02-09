@@ -2,6 +2,9 @@
 
 > **TEMPLATE**: The patterns and code examples below are illustrative examples only. Adapt to your actual project's framework and conventions before use.
 
+> **EXAMPLE ASSUMPTIONS**: This document uses React + hooks syntax (and TypeScript-style examples) as illustration.
+> If your frontend stack differs, keep the intent (accessibility, maintainability, performance) but rewrite examples to match your framework.
+
 **Purpose**: This document provides deeper, example-heavy rules for frontend development. It focuses on maintainable patterns, accessibility, and performance.
 
 ## Preferred Patterns
@@ -62,4 +65,3 @@ function useFetchData(url: string) {
 - **TTI (Time to Interactive)**: Minimize main-thread work and defer non-critical JavaScript to improve TTI.
 - **Bundle Size**: Use dynamic imports (`React.lazy`) and tree-shaking to keep the initial bundle size small.
 - **Accessibility**: Ensure all interactive elements have sufficient color contrast and are operable via keyboard.
-

@@ -2,6 +2,9 @@
 
 > **TEMPLATE**: The entries below are illustrative examples only. Replace with actual project decisions, patterns, and context before use.
 
+> **EXAMPLE ASSUMPTIONS**: Example entries mention specific architectures and technologies (e.g., microservices, React hooks, PostgreSQL).
+> Treat them as placeholders; replace with your project’s real decisions and keep this file focused on stable, long-lived context.
+
 **Purpose**: This document tracks the stable, rarely changing knowledge of the project. It serves as the long-term memory for architectural decisions, adopted patterns, and historical context.
 
 ## Architectural Decisions (ADR)
@@ -36,4 +39,3 @@
 - **Initial Prototype**: The first version of the app was built using a NoSQL database, but it was migrated to PostgreSQL after encountering scalability issues with complex joins.
 - **UI Rebrand (Jan 2026)**: A major visual update was performed to align with the new brand guidelines, focusing on a more minimalist and accessible design.
 - **Legacy API Support**: The `/api/v1` endpoints are maintained for backward compatibility with mobile clients but are scheduled for deprecation in Q3 2026.
-

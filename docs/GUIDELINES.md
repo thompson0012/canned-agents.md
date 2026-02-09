@@ -62,7 +62,32 @@ ASSUMPTIONS I'M MAKING:
 - [Assumption 2]
 ```
 
-### After Completing Work (REQUIRED)
+### Plan Template (RECOMMENDED)
+Use this format when proposing a plan (especially for anything > 20 lines or > 1 file per `AGENTS.md` §4).
+
+```
+PLAN:
+- Goal:
+- Scope (in):
+- Non-goals (out):
+- Constraints (tools, time, compatibility, risk tier):
+- Assumptions (explicit; link to PRD/TECH_STACK where relevant):
+- Risks / unknowns:
+
+TASK BREAKDOWN (atomic, verifiable):
+- Task 1:
+  - Files/areas:
+  - Success criteria:
+  - Verification (tests/build/lsp/manual):
+  - Dependencies/blockers:
+- Task 2:
+  - ...
+
+ROLLBACK / STOP CONDITIONS:
+- If [X] fails, do [Y] (revert, pause, escalate, ask for approval).
+```
+
+### After Completing Work (RECOMMENDED)
 ```
 CHANGES MADE:
 - [file/location]: [what changed and why]
@@ -82,5 +107,4 @@ When updating any document (per AGENTS.md §4.7):
 - Prefer tables for comparing options or listing tokens.
 - Keep examples practical and easy to follow.
 
-This document is now locked until the next approved change.
-
+This document may be updated by following `AGENTS.md` §4.7 (Documentation Evolution Protocol).

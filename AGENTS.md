@@ -53,7 +53,7 @@ Priority (Highest to Lowest):
 ## 4. Workflow & Error Handling
 
 1. **Context**: Gather info (lazy read + file exploration).
-2. **Plan**: Write a concrete plan for anything > 20 lines or > 1 file.
+2. **Plan**: Write a concrete plan for anything > 20 lines or > 1 file (use the plan template in `/docs/GUIDELINES.md`).
 3. **Approval Gate**: Wait for explicit user approval. **One gate only**—no redundant loops for trivial updates.
 4. **Execute**: Small, atomic steps. Use sub-agents/worktrees only if environment-supported and user-approved.
 5. **Verify**: Tests + manual checks.
@@ -93,7 +93,7 @@ When any document (including this one) needs updating:
 
 **NEVER silently edit documentation mid-session.**
 
-**Batching**: When a plan includes documentation updates, the agent may batch all doc-update proposals into a single approval alongside the plan (§4.3). This preserves the "one gate only" principle.
+**Batching**: When a plan includes documentation updates, the agent may batch all doc-update proposals into a single approval alongside the plan (§4.7). This preserves the "one gate only" principle.
 
 ## 5. Self-Improvement Protocol
 
@@ -175,4 +175,3 @@ Consult these files in `/docs/` as needed:
 - [ ] No broken cross-references or dangling links.
 - [ ] Doc map (§8) is in sync with actual `/docs/` contents.
 - [ ] All changes traceable to requirements.
-

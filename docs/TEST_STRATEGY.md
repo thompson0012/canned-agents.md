@@ -2,7 +2,7 @@
 
 *Note: This is a supporting guide. Core testing rules reside in `AGENTS.md` §4 (Error Protocol) and §7 (Engineering & Coding Standards — Test Default).*
 
-## Test-First for Bugs (MANDATORY)
+## Test-First for Bugs (Per AGENTS.md §4)
 
 Per AGENTS.md §4 "Error Protocol":
 - **Every bug must have a failing test** before the fix
@@ -46,9 +46,9 @@ Per AGENTS.md §7 "Test Default":
 
 ## CI/CD Integration
 
-- All tests must pass before merge (no exceptions)
+- All tests must pass before merge (per `AGENTS.md` §9 Completion Checklist)
 - Coverage reports generated on every PR
-- Flaky tests are treated as failures (fix or delete)
+- Flaky tests are treated as failures: fix the root cause, or quarantine with explicit approval (and a tracked follow-up). Do not delete tests just to make CI pass.
 
 ## Examples
 
