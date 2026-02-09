@@ -59,6 +59,240 @@ It covers precise formats and rules for:
 
 ## How They Work Together
 
+## AI Agent Activation Flow (ASCII)
+
+This section visualizes what happens when an AI agent is activated in this repo, how it decides what to read, how it plans work, where approvals happen, and how `AGENTS.md` and `/docs/*` interact.
+
+```text
+================================================================================
+AI AGENT ACTIVATION FLOW (this repo)
+Reflects: AGENTS.md constitution + /docs supporting docs + approval gates + docs
+================================================================================
+
+LEGEND
+------
+[Doc]        = a file the agent reads/writes
+(§X)         = section in AGENTS.md
+<Decision?>  = branching decision
+{Action}     = action the agent performs
+-->          = next step
+==>          = “consult /docs/* as needed” expansion
+
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ 0) AGENT ACTIVATED IN PROJECT FOLDER                                          │
+└──────────────────────────────────────────────────────────────────────────────┘
+        |
+        v
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ 1) LOAD CONSTITUTION + SESSION STATE                                          │
+└──────────────────────────────────────────────────────────────────────────────┘
+{Read} [AGENTS.md]
+  - authority model + conflict ladder (§1, §3)
+  - risk-tier reading rules (§2)
+  - workflow + approval gate (§4)
+  - doc evolution protocol (§4.7)
+  - self-improvement protocol (§5)
+  - security/protection (§6)
+  - engineering/testing defaults (§7)
+  - doc map (§8)
+  - completion checklist (§9)
+
+{Read} [/docs/PROGRESS.md]  (always; session carry-over)
+        |
+        v
+<Decision?> Any referenced doc missing?  (Missing-Doc Protocol §2)
+        |
+        +-- No  --> continue
+        |
+        +-- Yes --> {STOP}
+                    {Notify user: missing doc(s)}
+                    {Ask: scaffold missing doc OR proceed with safe defaults}
+                    (Never hallucinate)
+
+        |
+        v
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ 2) CLASSIFY WORK RISK TIER (what else to read before planning)                │
+└──────────────────────────────────────────────────────────────────────────────┘
+<Decision?> Risk tier?  (§2)
+        |
+        +-- Low  (mechanical/small change, <5 files, no auth/data deletion)
+        |     |
+        |     v
+        |   {Read only target files + PROGRESS}
+        |
+        +-- Normal (default features / UI changes)
+        |     |
+        |     v
+        |   {Also read} [/docs/PRD.md] [/docs/TECH_STACK.md] [/docs/IMPLEMENTATION_PLAN.md]
+        |
+        +-- High  (auth/payments/data deletion/infra/>5 files)
+              |
+              v
+            {Also read} [/docs/SECURITY.md] + relevant docs in Doc Map (§8)
+
+
+        |
+        v
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ 3) FOR EACH USER TASK: PLAN OR DO TRIVIAL                                     │
+└──────────────────────────────────────────────────────────────────────────────┘
+<Decision?> Is task trivial?  (§4)
+(heuristic: <= 20 lines AND 1 file AND obvious change)
+        |
+        +-- Yes (Trivial Path)
+        |     |
+        |     v
+        |   {Implement minimal change}
+        |   {Verify} (tests/build/manual as applicable)
+        |   {Update} [/docs/PROGRESS.md] (what changed, what’s next)
+        |   --> Done
+        |
+        +-- No (Plan Path)
+              |
+              v
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ 4) WRITE THE PLAN (how the agent breaks down work)                             │
+└──────────────────────────────────────────────────────────────────────────────┘
+{Write plan} using [/docs/GUIDELINES.md] "Plan Template (RECOMMENDED)"
+PLAN should include:
+  - Goal / Scope / Non-goals
+  - Constraints (tools, time, compatibility, risk tier)
+  - Assumptions (explicit; tie to PRD/TECH_STACK where relevant)
+  - Risks / unknowns
+  - TASK BREAKDOWN (atomic + verifiable)
+     * each task has: files/areas, success criteria, verification, deps/blockers
+  - Rollback / Stop conditions
+
+==> While planning, consult docs as needed (Doc Map §8):
+  - [/docs/PRD.md]                 (what to build / requirements)
+  - [/docs/TECH_STACK.md]          (what tools/versions are allowed)
+  - [/docs/IMPLEMENTATION_PLAN.md] (milestones, dependencies, verification)
+  - [/docs/TEST_STRATEGY.md]       (testing patterns; bug reproduction)
+  - [/docs/APP_FLOW.md]            (user journeys + edge cases)
+  - [/docs/DESIGN_SYSTEM.md]       (UI tokens + accessibility expectations)
+  - [/docs/FRONTEND_GUIDELINES.md] (frontend patterns/perf/accessibility)
+  - [/docs/BACKEND_STRUCTURE.md]   (backend layering/security/data flow)
+  - [/docs/MEMORY.md]              (stable architectural decisions/glossary)
+  - [/docs/TASKS.md]               (atomic task tracking conventions)
+
+        |
+        v
+<Decision?> Does plan include doc changes?
+        |
+        +-- No  --> proceed
+        |
+        +-- Yes --> {Prepare doc update proposals}
+                    (Batch with plan approval allowed; §4.7 “Batching”)
+
+        |
+        v
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ 5) APPROVAL GATE (no implementation without explicit approval)                │
+└──────────────────────────────────────────────────────────────────────────────┘
+<Decision?> User explicitly approves the plan?  (§4 step 3)
+        |
+        +-- No  --> {STOP} (do not implement)
+        |
+        +-- Yes --> continue
+
+
+        |
+        v
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ 6) EXECUTE IN ATOMIC STEPS + VERIFY                                           │
+└──────────────────────────────────────────────────────────────────────────────┘
+Loop per atomic task:
+  {Implement 1 atomic task}  (§4 step 4)
+  {Verify}                   (§4 step 5, §7 “Test Default”, §9 checklist)
+    - Run relevant tests (or add tests for bug fixes; §4 Error Protocol)
+    - Run build/typecheck if applicable
+    - Manual checks if relevant
+
+  <Decision?> Verification failed?
+    |
+    +-- No  --> mark task done, proceed to next atomic task
+    |
+    +-- Yes --> {Error Protocol} (§4)
+               - Diagnosis first
+               - For bugs: minimal reproduction test first
+               - Fix root cause; re-verify; do NOT paper over failures
+
+  <Decision?> Security issue discovered?  (§6)
+    |
+    +-- No  --> continue
+    |
+    +-- Yes --> {STOP immediately}
+               {Write WARNING}
+               {Wait for explicit direction}
+               (Optionally: safe reproduction test if appropriate)
+
+  <Decision?> User corrected the agent?  (§5)
+    |
+    +-- No  --> continue
+    |
+    +-- Yes --> {Self-Improvement Protocol}
+               - Acknowledge mistake
+               - Propose new preventive rule + location
+               - Use Doc Evolution Protocol before editing docs (§4.7)
+
+
+        |
+        v
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ 7) DOCUMENTATION UPDATES (NOT AUTO; proposal + approval required)             │
+└──────────────────────────────────────────────────────────────────────────────┘
+<Decision?> Do any docs need updating due to work done?
+        |
+        +-- No  --> continue
+        |
+        +-- Yes --> {Doc Evolution Protocol} (§4.7)
+                   1) STOP and DECLARE: "I notice [doc] needs update: [reason]"
+                   2) PROPOSE:
+                      PROPOSED DOC UPDATE to [filename]:
+                      OLD: [exact quoted section]
+                      NEW: [proposed change]
+                      REASON: [why]
+                   3) WAIT for approval
+                   4) APPLY doc edits only after approval
+                   5) LOG decision in [/docs/LESSONS.md]
+                   6) UPDATE [/docs/PROGRESS.md]
+
+
+        |
+        v
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ 8) SESSION CLOSEOUT                                                           │
+└──────────────────────────────────────────────────────────────────────────────┘
+{Update} [/docs/PROGRESS.md]
+  - Completed / In Progress / Blockers / Notes
+
+{Update if needed} [/docs/LESSONS.md]
+  - new patterns / mistakes / prevention rules
+
+{Ensure consistency}
+  - doc map references still correct
+  - no supporting doc overrides AGENTS.md (Conflict Ladder §3)
+
+
+================================================================================
+QUICK “WHICH DOC DO I USE?” MAP
+================================================================================
+- Need to decide WHAT to build?            -> [/docs/PRD.md]
+- Need to confirm allowed tools/versions?  -> [/docs/TECH_STACK.md]
+- Need the execution roadmap?              -> [/docs/IMPLEMENTATION_PLAN.md]
+- Need user journey + error handling UX?   -> [/docs/APP_FLOW.md]
+- Need UI tokens/accessibility rules?      -> [/docs/DESIGN_SYSTEM.md]
+- Need frontend patterns/perf?             -> [/docs/FRONTEND_GUIDELINES.md]
+- Need backend layering/security patterns? -> [/docs/BACKEND_STRUCTURE.md]
+- Need test expectations?                 -> [/docs/TEST_STRATEGY.md]
+- Need long-lived decisions/glossary?      -> [/docs/MEMORY.md]
+- Need atomic task checklist conventions?  -> [/docs/TASKS.md]
+- Need session carry-over state?           -> [/docs/PROGRESS.md]
+- Need “what we learned / avoid next time”?-> [/docs/LESSONS.md]
+```
+
 1. At the start of **every session**, the agent follows the **risk-tiered reading strategy** defined in `AGENTS.md` §2:
    - **Always**: `AGENTS.md` (behavior rules) + `/docs/PROGRESS.md` (session state)
    - **Normal+**: Adds `PRD.md`, `IMPLEMENTATION_PLAN.md`, `TECH_STACK.md`
