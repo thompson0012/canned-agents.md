@@ -154,6 +154,14 @@ When updating any document (per AGENTS.md §5):
 3. Wait for explicit user approval
 4. Update and log summary in PROGRESS.md
 
+#### When to Update Docs (Trigger Checklist)
+Update docs when any of the following occur:
+- **User feedback / clarified goals** → update AGENTS.md + canonical docs (Template-to-Production Rule).
+- **User correction** (wrong pattern / hallucination / bad decision) → add rule in AGENTS.md or LESSONS.md.
+- **Plan includes doc changes** → batch doc updates with plan approval.
+- **Code changes completed** → update PROGRESS.md and (if applicable) LESSONS.md.
+- **Doc map drift** → sync Doc Map with actual `/.agents/docs/` contents.
+
 ## Writing Conventions
 
 - Use active voice and professional tone.
