@@ -22,16 +22,16 @@ Status meanings:
 
 **Status-Driven Behavior Rules**
 - Only `STATUS: PRODUCTION` docs are authoritative.
-- `STATUS: TEMPLATE` or `STATUS: EXAMPLES-ONLY` must be updated (or explicitly ignored) before decisions rely on them.
+- `STATUS: TEMPLATE` or `STATUS: EXAMPLES-ONLY` may be read for context only; decisions MUST NOT rely on them.
 - Before first coding, confirm core docs are `STATUS: PRODUCTION`: PRD, TECH_STACK, IMPLEMENTATION_PLAN, SECURITY, TEST_STRATEGY.
 
 ## General Principles
 
-- **Conciseness**: Documents should be concise yet complete, aiming for clarity over length.
+- **Conciseness**: Documents MUST be concise yet complete, prioritizing clarity over length.
 - **Formatting**: Use Markdown with semantic headings (`##`, `###`), bullet lists, and tables to improve readability.
-- **Version Control**: Changes should be committed with descriptive, atomic messages.
-- **Traceability**: Statements should be grounded in the codebase, requirements, or recorded decisions.
-- **Approval**: Major updates to any document should be proposed to the user for approval.
+- **Version Control**: Changes MUST be committed with descriptive, atomic messages.
+- **Traceability**: Statements MUST be grounded in the codebase, requirements, or recorded decisions.
+- **Approval**: Major updates to any document MUST be proposed to the user for explicit approval before implementation.
 - **Iteration**: Documents should be updated as new insights or corrections occur. **Self‑maintenance**: `AGENTS.md` and `/.agents/docs/*` are agent‑maintained artifacts; the agent must keep them current and aligned with user conversations and decisions, using the Doc Evolution Protocol.
 
 ## Template Filling Protocol (for AI agents)

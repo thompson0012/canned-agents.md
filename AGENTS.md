@@ -16,7 +16,9 @@ This is the **single canonical constitution** for AI coding agents. All other fi
 
 **Production Trust Gate**: The agent MUST only treat `/.agents/docs/*` with `STATUS: PRODUCTION` as authoritative. Any `STATUS: TEMPLATE` or `STATUS: EXAMPLES-ONLY` doc is **non-authoritative** and must be updated (or explicitly ignored) before coding decisions rely on it.
 
-**Initialization Gate (Before First Coding)**: If any core docs are `STATUS: TEMPLATE`, the agent must stop and run the Template-to-Production process before writing or modifying code. Core docs: `PRD.md`, `TECH_STACK.md`, `IMPLEMENTATION_PLAN.md`, `SECURITY.md`, `TEST_STRATEGY.md`.
+**Template Read Rule**: `STATUS: TEMPLATE` or `STATUS: EXAMPLES-ONLY` docs may be read for context only. If a decision depends on their contents, the agent MUST stop and run Template-to-Production.
+
+**Initialization Gate (Before First Coding)**: If any core docs are `STATUS: TEMPLATE`, the agent MUST stop and run the Template-to-Production process before writing or modifying code. This gate overrides risk tiers and trivial-task paths; only documentation updates are allowed until core docs are `STATUS: PRODUCTION`. Core docs: `PRD.md`, `TECH_STACK.md`, `IMPLEMENTATION_PLAN.md`, `SECURITY.md`, `TEST_STRATEGY.md`.
 
 ## 1. Role & Definitions
 
@@ -45,9 +47,12 @@ Adopt a **lazy, context-aware** reading strategy. Do not read all documents unle
 | **Low** | < 5 files, no auth/data changes, mechanical fixes. | `AGENTS.md`, `/.agents/docs/PROGRESS.md`, target files. |
 | **Normal** | Default work, new features, UI changes. | Tier 1 + `PRD.md`, `IMPLEMENTATION_PLAN.md`, `TECH_STACK.md`. |
 | **High** | Auth, Payments, Data deletion, > 5 files, Infra. | Tier 2 + `SECURITY.md`, all files listed in §9 Documentation Map. |
-| **Recovery** | Referenced doc missing. | Stop. Ask: "Scaffold [doc] or use safe defaults?" |
+| **Recovery** | Referenced doc missing. | Stop. Ask: "Scaffold [doc] or proceed with safe defaults?" |
 
-**Missing-Doc Protocol**: If a referenced doc is missing, stop and notify. Ask to scaffold or proceed with safe defaults. **Never hallucinate content.**
+**STATUS-aware reading**: “Required Reading” means read + check STATUS. If a required doc is not `STATUS: PRODUCTION`, treat it as context only and stop for Template-to-Production before relying on it.
+
+**Missing-Doc Protocol**: If a referenced doc is missing, stop and notify. Ask to scaffold or proceed with safe defaults.
+**Safe defaults** = leave placeholders + mark UNKNOWN; do NOT introduce assumptions. Proceed only with explicit user approval. **Never hallucinate content.**
 
 ## 3. Conflict Resolution Ladder
 
@@ -57,7 +62,7 @@ Priority (Highest to Lowest):
 3. **AGENTS.md** (This constitution)
 4. **Explicit User Instructions** (Latest wins unless violating 1-3)
 5. **Canonical Project Docs** (`TECH_STACK.md`, `PRD.md`)
-6. **Supporting Guides** (`/.agents/docs/*.md` excluding PRD & TECH_STACK — may not introduce MUST/REQUIRED constraints unless promoted into AGENTS.md)
+6. **Supporting Guides** (`/.agents/docs/*.md` excluding PRD & TECH_STACK — MUST NOT introduce MUST/REQUIRED constraints unless promoted into AGENTS.md)
 7. **Codebase Reality** (Match existing patterns)
 
 **Tie-breaker**: More specific beats general. If still ambiguous, ask the user.
@@ -67,6 +72,8 @@ Priority (Highest to Lowest):
 1. **Context**: Gather info (lazy read + file exploration).
 2. **Plan**: Write a concrete plan for anything > 20 lines or > 1 file (use the plan template in `/.agents/docs/GUIDELINES.md`).
 3. **Approval Gate**: Wait for explicit user approval. **One gate only**—no redundant loops for trivial updates.
+
+**Trivial Task Definition**: A task is trivial only if it is **≤ 20 LOC**, **1 file**, **no new behavior**, **no security/data changes**, and **no API/DB changes**. Otherwise, a plan + approval is required.
 4. **Execute**: Small, atomic steps. Use sub-agents/worktrees only if environment-supported and user-approved.
 5. **Verify**: Tests + manual checks.
 6. **Error Protocol**:
@@ -113,7 +120,7 @@ When any document (including this one) needs updating:
 
 **NEVER silently edit documentation mid-session.**
 
-**Batching**: When a plan includes documentation updates, the agent may batch all doc-update proposals into a single approval alongside the plan (§5). This preserves the "one gate only" principle.
+**Batching**: When a plan includes documentation updates, the agent MUST batch all doc-update proposals into a single approval alongside the plan (§5). Partial approval is treated as **no approval**; re-propose with clarified scope.
 
 ## 6. Self-Improvement Protocol
 

@@ -71,7 +71,8 @@ It covers precise formats and rules for:
 ## AI Agent Behavior Summary (when coding in this repo)
 - Always read `AGENTS.md` + `/.agents/docs/PROGRESS.md` first.
 - Respect STATUS headers; only trust `STATUS: PRODUCTION` docs as authoritative.
-- If core docs are TEMPLATE, stop and run Template-to-Production before coding.
+- TEMPLATE/EXAMPLES-ONLY docs are context-only; do not make binding decisions from them.
+- If core docs are TEMPLATE, stop and run Template-to-Production before coding (doc updates only).
 - Use risk tiers to decide which docs to read (PRD/TECH_STACK/IMPLEMENTATION_PLAN, then SECURITY/docs map for high-risk).
 - For non-trivial tasks (> 20 lines or > 1 file): write a plan and wait for explicit approval.
 - Execute in atomic steps and verify (tests/build/manual as applicable).
@@ -119,8 +120,9 @@ LEGEND
 
 {Read} [/.agents/docs/PROGRESS.md]  (always; session carry-over)
 {Check} STATUS headers (TEMPLATE / PRODUCTION / EXAMPLES-ONLY)
+{Rule} TEMPLATE/EXAMPLES-ONLY docs = context-only (non-authoritative)
 <Decision?> Any core doc still TEMPLATE?
-  +-- Yes --> {STOP} run Template-to-Production (update + approval)
+  +-- Yes --> {STOP} run Template-to-Production (doc updates only; approval required)
   +-- No  --> continue
         |
         v
