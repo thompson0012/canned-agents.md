@@ -14,6 +14,9 @@ SESSION_MODE: STANDARD | AUTO-PILOT
 
 **Focus**: <short focus>
 
+**Active Plan (optional)**:
+- Link: /.agents/docs/plans/YYYY-MM-DD_short-title/
+
 ## Completed This Session
 - [ ] <completed item>
 
@@ -25,6 +28,20 @@ SESSION_MODE: STANDARD | AUTO-PILOT
 
 ## Quick Notes / Metrics (optional)
 - <note>
+
+## Rollup (weekly/monthly, optional)
+- **Key outcomes**:
+- **Next up**:
+- **Risks/blockers**:
+
+## Session Summary: 2026-02-13
+
+**Focus**: Governance updates (escalation + git guide)
+
+## Completed This Session
+- [x] Updated AGENTS.md escalation criteria to require human assistance when out of scope.
+- [x] Added Git Guide to enforce atomic commits with explicit approval.
+- [x] Logged the new escalation rule in LESSONS.md.
 
 ## Example (fictional, delete before use)
 

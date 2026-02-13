@@ -85,6 +85,11 @@ Guidance for maintaining a clean and traceable project history:
 - **Purpose**: Defense-in-depth guidance for security-conscious development.
 - **Key Areas**: Secrets management, input validation, and safe coding patterns.
 
+### CHANGELOG.md
+- **Purpose**: Concise release history with human‑readable summaries.
+- **Structure Recommendation**: `Unreleased` plus dated/versioned entries; each entry has `Added`, `Changed`, `Fixed`.
+- **Traceability**: Reference task IDs, plan links, or PRs when helpful.
+
 ## Document Minimum Sections (Best-Practice Baseline)
 Before a doc is considered “ready,” ensure these sections exist:
 
@@ -118,6 +123,11 @@ Before a doc is considered “ready,” ensure these sections exist:
 - Coverage minimums
 - Where tests live
 - CI expectations
+
+**CHANGELOG.md**
+- Unreleased
+- Version entries (date or version)
+- Added / Changed / Fixed sections
 
 ## Communication Standards
 

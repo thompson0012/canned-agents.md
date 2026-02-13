@@ -55,3 +55,12 @@ Plan: ../<same-folder>/plan.md
 - Keep plan folders small and scoped to one approved goal.
 - Prefer links over duplicated text (one source of truth).
 - If the plan changes materially, add a short “Plan change note” section in `plan.md` with date + reason.
+- Use a Task ID prefix in tasks (e.g., `T-YYYY-MM-DD-###`) and reference it in commits/PRs when available.
+
+## Task IDs (recommended)
+
+Format: `T-YYYY-MM-DD-###`
+
+- `YYYY-MM-DD` = plan start date
+- `###` = 3-digit sequence within the plan
+- Example: `T-2026-02-13-004`

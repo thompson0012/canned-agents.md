@@ -71,3 +71,10 @@ const increment = () => setCount(prevCount => prevCount + 1);
 - **Mistake / Issue**: README references drifted from AGENTS.md section numbers after renumbering.
 - **Root Cause**: Section renumbering in AGENTS.md was not propagated to README.md cross-references.
 - **Rule to Prevent**: When renumbering AGENTS.md sections, update all external references (README + docs) in the same change set and verify them against the canonical section numbers.
+
+## Pattern: Out-of-Scope Escalation
+
+- **Mistake / Issue**: Proceeded despite a request exceeding the agent’s capability or scope.
+- **Root Cause**: Escalation criteria did not explicitly include out-of-scope/capability situations.
+- **Rule to Prevent**: If a request is outside the agent's scope/capability, stop and ask for human assistance/clarification.
+- **Example**: "User asks for GPU driver installation on a locked CI runner; ask for human assistance instead of guessing."

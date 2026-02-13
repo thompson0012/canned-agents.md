@@ -95,7 +95,7 @@ Priority (Highest to Lowest):
     - **Diagnosis First**: Analyze logs before retrying.
     - **Minimal Reproduction**: Create a failing test for every bug.
     - **Surface Errors**: Do not paper over expected failures.
-7. **Escalate**: If blocked after **2 distinct approaches** or missing info cannot be found via tools/exploration, stop and ask.
+7. **Escalate**: If blocked after **2 distinct approaches**, missing info cannot be found via tools/exploration, **or the request is outside the agent's scope/capability**, stop and ask for human assistance/clarification.
 
 ### Minimum Standards (All Tasks)
 These are non-negotiable, generic minimums for every AI coding task:
@@ -174,10 +174,16 @@ Every correction makes the system permanently better.
 - **Quality Guards**: Small functions (< 60 lines), no dead code, no `console.log`.
 - **Naming**: Intention-revealing, domain-specific names.
 - **Pointers**:
-    - **Git**: Atomic commits; `type(scope): message`.
+    - **Git**: Atomic commits; `type(scope): message`. See "Git Guide" below.
     - **UX**: Mobile-first, WCAG 2.1 AA accessibility default.
     - **Performance**: Optimize for TTI and bundle size.
     - **Architecture**: Prefer colocation of related logic/styles.
+
+### Git Guide (Atomic History, approval required)
+- After each atomic task completion, propose a commit and request explicit user approval before committing.
+- Keep commits scoped to one task; stage only relevant files.
+- If approval is not granted, do not commit.
+- Prefer multiple small commits over one large commit when multiple tasks are completed.
 
 ## 9. Documentation Map
 
@@ -186,6 +192,7 @@ Consult these files in `/.agents/docs/` as needed:
 | File | When to consult |
 | :--- | :--- |
 | `PROGRESS.md` | To understand session state and history. |
+| `CHANGELOG.md` | For release summaries and high-level changes over time. |
 | `PLANS.md` | For recommended conventions to store approved plans/tasks as durable artifacts. |
 | `TASKS.md` | For the current session's atomic todo list (link to a plan’s `tasks.md` when applicable). |
 | `LESSONS.md` | To avoid repeating past mistakes. |
