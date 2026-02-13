@@ -34,6 +34,20 @@ SESSION_MODE: STANDARD | AUTO-PILOT
 - **Next up**:
 - **Risks/blockers**:
 
+## Change Log (Consolidated)
+
+### Unreleased
+
+- **Added**: <entry>
+- **Changed**: <entry>
+- **Fixed**: <entry>
+
+### <YYYY-MM-DD or vX.Y.Z>
+
+- **Added**: <entry>
+- **Changed**: <entry>
+- **Fixed**: <entry>
+
 ## Session Summary: 2026-02-13
 
 **Focus**: Governance updates (escalation + git guide)

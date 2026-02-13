@@ -44,14 +44,12 @@ This file teaches the agent **exactly how to write, structure, and update every 
 
 It covers precise formats and rules for:
 
-- PRD.md
-- IMPLEMENTATION_PLAN.md
+- PRD.md (includes plan + tasks)
+- PROGRESS.md (includes changelog)
+- TECH_STACK.md (includes security + test strategy)
 - LESSONS.md (learned lessons & anti-patterns)
-- PROGRESS.md
-- TECH_STACK.md
 - FRONTEND_GUIDELINES.md / BACKEND_STRUCTURE.md
 - MEMORY.md (long-term architectural decisions)
-- TASKS.md
 
 **Key philosophy**  
 > Documentation must be concise, scannable, consistent, and version-controlled.  
@@ -64,7 +62,7 @@ It covers precise formats and rules for:
 - `/.agents/docs/PROGRESS.md` carries session state forward.
 - Each doc starts with a **STATUS** header (TEMPLATE / PRODUCTION / EXAMPLES-ONLY).
 - Template-to-Production: after user feedback + clarified goals, the agent updates AGENTS.md + docs via the Documentation Evolution Protocol.
-- If you want durable, linkable plan/task records across sessions, see `/.agents/docs/PLANS.md`.
+- If you want durable, linkable plan/task records across sessions, keep plans inside `/.agents/docs/PRD.md` under the "Implementation Plan" section.
 
 ## AI Agent Behavior Summary (when coding in this repo)
 - Always read `AGENTS.md` + `/.agents/docs/PROGRESS.md` first.
@@ -157,12 +155,12 @@ SESSION_MODE = STANDARD | AUTO-PILOT (set per session in PROGRESS.md)
         +-- Normal (default features / UI changes)
         |     |
         |     v
-|   {Also read} [/.agents/docs/PRD.md] [/.agents/docs/TECH_STACK.md] [/.agents/docs/IMPLEMENTATION_PLAN.md]
+|   {Also read} [/.agents/docs/PRD.md] [/.agents/docs/TECH_STACK.md]
         |
         +-- High  (auth/payments/data deletion/infra/>5 files)
               |
               v
-{Also read} [/.agents/docs/SECURITY.md] + relevant docs in Doc Map (§9)
+{Also read} [/.agents/docs/TECH_STACK.md] + relevant docs in Doc Map (§9)
 
 
         |
@@ -200,8 +198,6 @@ PLAN MUST include:
 ==> While planning, consult docs as needed (Doc Map §9):
   - [/.agents/docs/PRD.md]                 (what to build / requirements)
   - [/.agents/docs/TECH_STACK.md]          (what tools/versions are allowed)
-  - [/.agents/docs/IMPLEMENTATION_PLAN.md] (milestones, dependencies, verification)
-  - [/.agents/docs/TEST_STRATEGY.md]       (testing patterns; bug reproduction)
 - [/.agents/docs/PRD.md]                 (user journeys + edge cases)
 - [/.agents/docs/FRONTEND_GUIDELINES.md] (UI tokens + accessibility expectations)
   - [/.agents/docs/FRONTEND_GUIDELINES.md] (frontend patterns/perf/accessibility)
@@ -314,21 +310,21 @@ QUICK “WHICH DOC DO I USE?” MAP
 ================================================================================
 - Need to decide WHAT to build?            -> [/.agents/docs/PRD.md]
 - Need to confirm allowed tools/versions?  -> [/.agents/docs/TECH_STACK.md]
-- Need the execution roadmap?              -> [/.agents/docs/IMPLEMENTATION_PLAN.md]
+- Need the execution roadmap?              -> [/.agents/docs/PRD.md]
 - Need user journey + error handling UX?   -> [/.agents/docs/PRD.md]
 - Need UI tokens/accessibility rules?      -> [/.agents/docs/FRONTEND_GUIDELINES.md]
 - Need frontend patterns/perf?             -> [/.agents/docs/FRONTEND_GUIDELINES.md]
 - Need backend layering/security patterns? -> [/.agents/docs/BACKEND_STRUCTURE.md]
-- Need test expectations?                 -> [/.agents/docs/TEST_STRATEGY.md]
+- Need test expectations?                 -> [/.agents/docs/TECH_STACK.md]
 - Need long-lived decisions/glossary?      -> [/.agents/docs/MEMORY.md]
-- Need atomic task checklist conventions?  -> [/.agents/docs/TASKS.md]
+- Need atomic task checklist conventions?  -> [/.agents/docs/PRD.md]
 - Need session carry-over state?           -> [/.agents/docs/PROGRESS.md]
 - Need “what we learned / avoid next time”?-> [/.agents/docs/LESSONS.md]
 ```
 
 1. At the start of **every session**, the agent follows the **risk-tiered reading strategy** defined in `AGENTS.md` §2:
    - **Always**: `AGENTS.md` (behavior rules) + `/.agents/docs/PROGRESS.md` (session state)
-   - **Normal+**: Adds `PRD.md`, `IMPLEMENTATION_PLAN.md`, `TECH_STACK.md`
+- **Normal+**: Adds `PRD.md`, `TECH_STACK.md`
    - **High-risk**: Full reading of all files listed in the Documentation Map (§9)
 
 2. When the agent needs to **create or update any document**, it must follow the **exact structure and rules** defined in `GUIDELINES.md`.
@@ -367,7 +363,7 @@ Special thanks to the many developers who openly shared their `CLAUDE.md` / `AGE
 ## Quick Start (Template Mode)
 1. Copy `AGENTS.md` to your project root.
 2. Copy `/.agents/docs/` into your project and keep filenames unchanged.
-3. Replace all **Example (fictional)** blocks in `PRD.md`, `TECH_STACK.md`, `IMPLEMENTATION_PLAN.md`, `PROGRESS.md`, `TASKS.md`, and `MEMORY.md`.
+3. Replace all **Example (fictional)** blocks in `PRD.md`, `TECH_STACK.md`, `PROGRESS.md`, and `MEMORY.md`.
 4. Point your AI tool to `AGENTS.md` as the project instruction file.
 5. Start the first session and let the agent follow the risk-tiered reading rules.
 

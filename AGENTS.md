@@ -18,7 +18,7 @@ This is the **single canonical constitution** for AI coding agents. All other fi
 
 **Template Read Rule**: `STATUS: TEMPLATE` or `STATUS: EXAMPLES-ONLY` docs MAY be read for context only. Decisions MUST NOT rely on them; if a decision depends on their contents, the agent MUST stop and run Template-to-Production.
 
-**Initialization Gate (Before First Coding)**: Do NOT require all core docs to exist or be `STATUS: PRODUCTION` at session start. Apply **lazy reading**: only when a doc is actually needed for a decision, read it and check STATUS. If the needed doc is missing or not `STATUS: PRODUCTION`, stop and ask the user to confirm or supplement the required information (or scaffold the doc). Do not proceed with decisions that rely on non‑PRODUCTION content without explicit user confirmation. Core docs (in `/.agents/docs/`): `PRD.md`, `TECH_STACK.md`, `IMPLEMENTATION_PLAN.md`, `SECURITY.md`, `TEST_STRATEGY.md`.
+**Initialization Gate (Before First Coding)**: Do NOT require all core docs to exist or be `STATUS: PRODUCTION` at session start. Apply **lazy reading**: only when a doc is actually needed for a decision, read it and check STATUS. If the needed doc is missing or not `STATUS: PRODUCTION`, stop and ask the user to confirm or supplement the required information (or scaffold the doc). Do not proceed with decisions that rely on non‑PRODUCTION content without explicit user confirmation. Core docs (in `/.agents/docs/`): `PRD.md`, `TECH_STACK.md`, `PROGRESS.md`.
 
 ## 1. Role & Definitions
 
@@ -52,8 +52,8 @@ Adopt a **lazy, context-aware** reading strategy. Do not read all documents unle
 | Tier | Trigger | Required Reading |
 | :--- | :--- | :--- |
 | **Low** | < 5 files, no auth/data changes, mechanical fixes. | `AGENTS.md`, `/.agents/docs/PROGRESS.md`, target files. |
-| **Normal** | Default work, new features, UI changes. | Tier 1 + `/.agents/docs/PRD.md`, `/.agents/docs/IMPLEMENTATION_PLAN.md`, `/.agents/docs/TECH_STACK.md`. |
-| **High** | Auth, Payments, Data deletion, > 5 files, Infra. | Tier 2 + `/.agents/docs/SECURITY.md`, all files listed in §9 Documentation Map. |
+| **Normal** | Default work, new features, UI changes. | Tier 1 + `/.agents/docs/PRD.md`, `/.agents/docs/TECH_STACK.md`. |
+| **High** | Auth, Payments, Data deletion, > 5 files, Infra. | Tier 2 + `/.agents/docs/TECH_STACK.md`, all files listed in §9 Documentation Map. |
 | **Recovery** | Referenced doc missing. | Stop. Ask: "Scaffold [doc] or proceed with safe defaults?" |
 
 **STATUS-aware reading**: “Required Reading” means read + check STATUS. If a required doc is not `STATUS: PRODUCTION`, treat it as context only and stop for Template-to-Production before relying on it.
@@ -192,16 +192,11 @@ Consult these files in `/.agents/docs/` as needed:
 | File | When to consult |
 | :--- | :--- |
 | `PROGRESS.md` | To understand session state and history. |
-| `CHANGELOG.md` | For release summaries and high-level changes over time. |
-| `PLANS.md` | For recommended conventions to store approved plans/tasks as durable artifacts. |
-| `TASKS.md` | For the current session's atomic todo list (link to a plan’s `tasks.md` when applicable). |
+| `PROGRESS.md` | To understand session state, history, and changelog. |
+| `PRD.md` | To understand requirements, plan, and task list. |
+| `TECH_STACK.md` | To verify versions, security guidance, and test strategy. |
 | `LESSONS.md` | To avoid repeating past mistakes. |
 | `GUIDELINES.md` | When creating/updating documentation. |
-| `TECH_STACK.md` | To verify versions and architecture. |
-| `PRD.md` | To understand requirements and "why". |
-| `SECURITY.md` | For security patterns and defense-in-depth guidance (§2 High-risk tasks). |
-| `IMPLEMENTATION_PLAN.md` | For roadmap, milestones, architecture diagrams (§2 Normal+ tasks). |
-| `TEST_STRATEGY.md` | For testing standards, coverage targets, and test organization. |
 | `FRONTEND_GUIDELINES.md` | For frontend patterns, component structure, and accessibility standards. |
 | `BACKEND_STRUCTURE.md` | For backend architecture, API patterns, and service organization. |
 | `MEMORY.md` | For long-term architectural decisions and domain glossary. |

@@ -62,33 +62,23 @@ Guidance for maintaining a clean and traceable project history:
   - Sections for Completed, In Progress, Blockers, and Quick Notes.
 - **Example**: "Finished API integration for user profiles; blocking on database migration script."
 
-### PRD.md (Product Requirements)
-- **Purpose**: Single source of truth for product goals and features, including user journeys and edge cases.
-- **Structure Recommendation**: Overview, Goals/Metrics, Personas, Features (MoSCoW), Non-Functional Requirements, User Journeys & Edge Cases, Flow Diagrams (optional).
+### PRD.md (Product Requirements, Plan & Tasks)
+- **Purpose**: Single source of truth for requirements, implementation plan, and tasks.
+- **Structure Recommendation**: Overview, Goals/Metrics, Personas, Features (MoSCoW), Non-Functional Requirements, User Journeys & Edge Cases, Flow Diagrams (optional), Implementation Plan, Task Board.
 - **Example Goal**: "Reduce page load time by 30% to improve user retention."
 
-### IMPLEMENTATION_PLAN.md
-- **Purpose**: Roadmap for technical execution.
-- **Structure Recommendation**: Milestones, Phases, Open Decisions, and Task Breakdowns.
-- **Verification**: Each phase should include explicit verification steps (e.g., "Run unit tests", "Manual UI check").
+### TECH_STACK.md
+- **Purpose**: Documentation of versions and allowed tools, including security and test strategy.
+- **Discipline**: Use an "unknown until confirmed" approach for any tech stack assumptions.
 
 ### LESSONS.md (Operational Patterns)
 - **Purpose**: Log of learned optimizations and avoided mistakes.
 - **Structure Recommendation**: Issue description, Root cause, and a pattern to prevent recurrence.
 - **Example**: "Avoided using global state for temporary form data; used local component state instead."
 
-### TECH_STACK.md
-- **Purpose**: Documentation of versions and allowed tools.
-- **Discipline**: Use an "unknown until confirmed" approach for any tech stack assumptions.
-
-### SECURITY.md (Security Guidance)
-- **Purpose**: Defense-in-depth guidance for security-conscious development.
-- **Key Areas**: Secrets management, input validation, and safe coding patterns.
-
-### CHANGELOG.md
-- **Purpose**: Concise release history with human‑readable summaries.
-- **Structure Recommendation**: `Unreleased` plus dated/versioned entries; each entry has `Added`, `Changed`, `Fixed`.
-- **Traceability**: Reference task IDs, plan links, or PRs when helpful.
+### PROGRESS.md
+- **Purpose**: Session log plus consolidated changelog.
+- **Structure Recommendation**: Session summary, completed/in‑progress/blockers, rollups, and changelog entries.
 
 ## Document Minimum Sections (Best-Practice Baseline)
 Before a doc is considered “ready,” ensure these sections exist:
@@ -101,11 +91,15 @@ Before a doc is considered “ready,” ensure these sections exist:
 - Out of scope
 - User journeys & edge cases
 - Flow diagrams (optional)
+- Implementation plan (milestones, phases, risks)
+- Task board (atomic tasks + statuses)
 
 **TECH_STACK.md**
 - Tool list with versions
 - Runtime constraints
 - Prohibited/deprecated items
+- Security guidance
+- Test strategy
 - “Locked as of” date
 
 **IMPLEMENTATION_PLAN.md**
@@ -114,22 +108,11 @@ Before a doc is considered “ready,” ensure these sections exist:
 - Risks & mitigations
 - Rollback/stop conditions
 
-**SECURITY.md**
-- Secrets management
-- Input validation
-- Safe coding patterns
-- Vulnerability response
-
-**TEST_STRATEGY.md**
-- Test pyramid
-- Coverage minimums
-- Where tests live
-- CI expectations
-
-**CHANGELOG.md**
-- Unreleased
-- Version entries (date or version)
-- Added / Changed / Fixed sections
+**PROGRESS.md**
+- Session summary
+- Completed / In Progress / Blockers
+- Rollup (weekly/monthly, optional)
+- Changelog (Added / Changed / Fixed)
 
 **FRONTEND_GUIDELINES.md**
 - UI tokens
