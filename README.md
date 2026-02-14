@@ -26,6 +26,7 @@ It defines:
 - Protection rules (no regressions, no hallucinations, no unsolicited refactors)
 - Security & prompt-injection defenses
 - Coding standards (match existing codebase first!)
+- Design principles & patterns (SOLID, separation of concerns, clean architecture via §8.1)
 - Testing & bug-fixing rituals (test-first bug reproduction)
 - Self-improvement protocol (corrections become permanent rules via §6)
 - Documentation evolution protocol (structured update process via §5)
@@ -119,6 +120,7 @@ SESSION_MODE = STANDARD | AUTO-PILOT (set per session in PROGRESS.md)
   - self-improvement protocol (§6)
   - security/protection (§7)
   - engineering/testing defaults (§8)
+  - design principles & patterns (§8.1)
   - doc map (§9)
   - completion checklist (§10)
 
@@ -312,6 +314,7 @@ QUICK “WHICH DOC DO I USE?” MAP
 - Need to confirm allowed tools/versions?  -> [/.agents/docs/TECH_STACK.md]
 - Need the execution roadmap?              -> [/.agents/docs/PRD.md]
 - Need user journey + error handling UX?   -> [/.agents/docs/PRD.md]
+- Need design principles/architecture?     -> AGENTS.md §8.1
 - Need UI tokens/accessibility rules?      -> [/.agents/docs/FRONTEND_GUIDELINES.md]
 - Need frontend patterns/perf?             -> [/.agents/docs/FRONTEND_GUIDELINES.md]
 - Need backend layering/security patterns? -> [/.agents/docs/BACKEND_STRUCTURE.md]

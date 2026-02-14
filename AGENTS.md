@@ -179,6 +179,44 @@ Every correction makes the system permanently better.
     - **Performance**: Optimize for TTI and bundle size.
     - **Architecture**: Prefer colocation of related logic/styles.
 
+### 8.1 Design Principles & Patterns
+
+Use design principles to **control complexity** (cohesion, coupling, dependencies); use design patterns only as "named implementations" of those principles in specific contexts.
+
+#### Core Principles (Language-Agnostic)
+- **Separation of Concerns**: Keep UI, domain/business rules, and infrastructure in different modules so each changes for one kind of reason.
+- **High Cohesion, Low Coupling**: Group code that changes together; minimize knowledge between modules.
+- **SOLID**:
+  - **S**ingle Responsibility Principle: One reason to change per module.
+  - **O**pen/Closed Principle: Extend behavior without modifying existing code.
+  - **L**iskov Substitution: Subtypes must be substitutable for base types.
+  - **I**nterface Segregation: Small, focused interfaces over large ones.
+  - **D**ependency Inversion: Depend on abstractions, not concretions.
+- **DRY / KISS / YAGNI**: Avoid duplicated knowledge, prefer simple solutions, don't build speculative features.
+- **Composition over Inheritance**: Build behavior by composing components/services rather than deep inheritance trees.
+
+#### Design Patterns (When Complexity Requires Them)
+Treat patterns as shared vocabulary; apply only when removing existing pain:
+
+| Category | Use When | Examples |
+|----------|----------|----------|
+| **Creational** | Controlling instantiation/wiring | Factory, Builder |
+| **Structural** | Isolating change, simplifying boundaries | Adapter, Decorator, Facade |
+| **Behavioral** | Controlling variation without if-else sprawl | Strategy, Observer, State |
+
+**Constraint**: No pattern unless it removes an existing pain. No speculative generalization.
+
+#### Clean Architecture Guidelines for AI Agents
+- **Architectural Boundaries First**: Identify "domain vs application vs infrastructure vs UI" before writing code. Dependencies must point inward (UI/infrastructure depend on domain, not reverse).
+- **Abstractions for Volatility**: Define stable interfaces (ports) for anything volatile (DB, network, browser APIs, 3rd-party SDKs) so implementations can swap without rewriting core logic.
+- **Small, Testable Units**: Enforce SRP at module level; factor shared rules into one authoritative place.
+- **Avoid Over-Engineering**: Add constraints like "no pattern unless it removes an existing pain" and "no future features" to prevent premature generalization.
+
+#### Frontend + Backend Coding Rules
+- **Backend**: Business rules in domain layer with no framework imports; expose use-cases (application services) that depend on interfaces for persistence/IO (enables mocks in tests).
+- **Frontend**: Keep rendering (components) separate from state/use-cases; treat API clients, storage, analytics as infrastructure adapters behind interfaces.
+- **Across Both**: Prefer composition of small services/hooks/modules; use Strategy for interchangeable policies, Facade to hide messy subsystems.
+
 ### Git Guide (Atomic History, approval required)
 - After each atomic task completion, propose a commit and request explicit user approval before committing.
 - Keep commits scoped to one task; stage only relevant files.

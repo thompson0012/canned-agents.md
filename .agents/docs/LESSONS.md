@@ -74,7 +74,14 @@ const increment = () => setCount(prevCount => prevCount + 1);
 
 ## Pattern: Out-of-Scope Escalation
 
-- **Mistake / Issue**: Proceeded despite a request exceeding the agent’s capability or scope.
+- **Mistake / Issue**: Proceeded despite a request exceeding the agent's capability or scope.
 - **Root Cause**: Escalation criteria did not explicitly include out-of-scope/capability situations.
 - **Rule to Prevent**: If a request is outside the agent's scope/capability, stop and ask for human assistance/clarification.
 - **Example**: "User asks for GPU driver installation on a locked CI runner; ask for human assistance instead of guessing."
+
+## Pattern: Design Principles Documentation
+
+- **Mistake / Issue**: Lacked concrete criteria for evaluating code quality beyond "match existing style", leading to inconsistent architectural decisions.
+- **Root Cause**: AGENTS.md §8 had generic coding standards but no specific guidance on complexity control, architectural boundaries, or when to use design patterns.
+- **Rule to Prevent**: Reference concrete design principles (SOLID, separation of concerns, composition over inheritance) and pattern categories (Creational, Structural, Behavioral) when reviewing code. Apply the constraint: "No pattern unless it removes an existing pain."
+- **Example**: "When reviewing a new feature, check: Does this violate SRP? Are dependencies pointing inward (domain at center)? Is there premature abstraction (YAGNI violation)?"
