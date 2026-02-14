@@ -48,7 +48,7 @@ Read additional docs based on task risk:
 |------|---------|------|
 | **Low** | < 5 files, mechanical fix | Targets only |
 | **Normal** | Features, UI changes | + PRD.md, TECH_STACK.md |
-| **High** | Auth, data, payments, infra, >5 files | + All relevant docs from §7 |
+| **High** | Auth, data, payments, infra, >5 files | + All relevant docs from §8 |
 
 ### 3.3 Document Status
 
@@ -81,7 +81,7 @@ Plan → Approve → Execute → Verify → Document
 ```
 
 **Trivial Task**: A task is trivial ONLY if ALL are true:
-- ≤20 lines of code changed
+- ≤20 lines of code (LOC) changed
 - 1 file only
 - No new behavior (refactoring/mechanical changes only)
 - No security/data changes (auth, payments, PII, deletion)
@@ -90,12 +90,14 @@ Plan → Approve → Execute → Verify → Document
 **NEEDS APPROVAL if ANY:**
 - Data deletion or destructive operations
 - Auth, payment, or security-sensitive code
-- >20 lines of code
+- >20 LOC
 - >1 file touched
 - New behavior or features
 - Infrastructure changes (deps, CI/CD, build)
 - Database schema or migration changes
 - Cross-service modifications
+
+**Note**: If TEMPLATE docs are needed and user is unavailable, use safe defaults (§3.3): leave placeholders + mark UNKNOWN.
 
 ### 4.2 Planning (Required if Non-Trivial)
 
@@ -108,13 +110,13 @@ Plan must include:
 
 ### 4.3 Approval Gate
 
-**AUTO-PILOT**: User says "AUTO-PILOT" → auto plan/execute for session. Ends with "AUTO-PILOT OFF" or session end.
+**AUTO-PILOT MODE**:
+- Trigger: User says "AUTO-PILOT" at session start
+- Scope: Auto-approve implementation decisions only
+- Boundaries: Security issues, destructive operations, and CRITICAL/HIGH severity still require explicit approval
+- Ends: "AUTO-PILOT OFF", session end, or CRITICAL/HIGH security discovery
 
-**Standard Mode**: Explicit approval required for:
-- Data deletion or destructive changes
-- Auth, payment, security-sensitive work
-- Irreversible git operations
-- Infrastructure changes or >5 file edits
+**STANDARD MODE**: Explicit approval required per §4.1 "NEEDS APPROVAL" criteria.
 
 ### 4.4 Execution Steps
 
@@ -139,7 +141,9 @@ Express uncertainty levels explicitly:
 [CONFIDENCE: UNCERTAIN] Not sure if this should be a service or repository
 ```
 
-### 4.5 Error Handling
+**Override Rule**: Escalation (§7) overrides Confidence Framework. If clarification fails or escalation is triggered, proceed with escalation regardless of confidence level.
+
+### 4.6 Error Handling
 
 1. **Diagnose**: Analyze before fixing
 2. **Reproduce**: Create minimal failing test for bugs
@@ -172,7 +176,7 @@ Express uncertainty levels explicitly:
 | User corrects you | Log lesson in LESSONS.md |
 | Docs need changing | Propose → Approve → Update |
 | Template→Production | Fill templates with project info |
-| **Code changes patterns** | **Update FRONTEND.md or BACKEND.md** |
+| Code changes patterns | Update FRONTEND.md or BACKEND.md |
 
 ### 5.2 Update Process
 
@@ -188,6 +192,8 @@ Express uncertainty levels explicitly:
 ```
 
 **Never** edit docs without approval (unless AUTO-PILOT).
+
+**EXCEPTION**: LESSONS.md may be appended without approval when logging factual corrections. This prevents the approval loop where learning from mistakes requires permission to record the lesson.
 
 ### 5.3 Architecture Documentation Maintenance
 
@@ -216,8 +222,8 @@ When corrected by user (wrong pattern, hallucination, bad decision):
 1. **Acknowledge**: "I made an error: [specific mistake]"
 2. **Propose Rule**: Draft a precise rule to prevent recurrence
 3. **Suggest Location**: AGENTS.md §X or LESSONS.md
-4. **Wait for Approval**: Use Documentation Protocol (§5)
-5. **Update**: Once approved, update the document
+4. **Log**: Append to LESSONS.md immediately (no approval required for factual corrections)
+5. **Update**: If rule affects AGENTS.md, follow Documentation Protocol (§5)
 
 ---
 
