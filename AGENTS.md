@@ -38,6 +38,7 @@ Supporting docs (`/.agents/docs/*`) contain:
 ### 3.1 Always Read First
 1. **AGENTS.md** (this file) — behavior rules
 2. **/.agents/docs/PROGRESS.md** — session state
+3. **/.agents/docs/LESSONS.md** — recent corrections (if entries from last 30 days)
 
 ### 3.2 Tiered Reading
 
@@ -54,8 +55,16 @@ Read additional docs based on task risk:
 - **TEMPLATE**: Generic template, non-authoritative
 - **PRODUCTION**: Validated, authoritative
 - **EXAMPLES-ONLY**: Fictional examples
+- **STALE**: Docs older than code changes (update required)
 
 **Rule**: Only `STATUS: PRODUCTION` docs are authoritative. If a needed doc is `TEMPLATE`, stop and ask: "Scaffold with project-specific info or proceed with safe defaults?"
+
+**Safe defaults** = leave placeholders + mark UNKNOWN; do NOT introduce assumptions. Proceed only with explicit user approval. **Never hallucinate content.**
+
+**Document Lifecycle:**
+- TEMPLATE → PRODUCTION: Fill with project info, validate, date
+- PRODUCTION → STALE: Code changes make docs outdated
+- STALE → PRODUCTION: Update to match current code, re-date
 
 **Template Content**: Examples and fictional content must be labeled clearly. Never treat example content as real project history.
 
@@ -71,7 +80,22 @@ Trivial? → Execute → Verify → Document
 Plan → Approve → Execute → Verify → Document
 ```
 
-**Trivial Task**: ≤20 LOC, 1 file, no new behavior, no security/data changes.
+**Trivial Task**: A task is trivial ONLY if ALL are true:
+- ≤20 lines of code changed
+- 1 file only
+- No new behavior (refactoring/mechanical changes only)
+- No security/data changes (auth, payments, PII, deletion)
+- No infrastructure changes (dependencies, config, build)
+
+**NEEDS APPROVAL if ANY:**
+- Data deletion or destructive operations
+- Auth, payment, or security-sensitive code
+- >20 lines of code
+- >1 file touched
+- New behavior or features
+- Infrastructure changes (deps, CI/CD, build)
+- Database schema or migration changes
+- Cross-service modifications
 
 ### 4.2 Planning (Required if Non-Trivial)
 
@@ -98,12 +122,43 @@ Plan must include:
 2. **Verify**: LSP diagnostics → Tests → Build → Manual check
 3. **Document**: Update PROGRESS.md
 
+### 4.5 Confidence Framework
+
+Express uncertainty levels explicitly:
+
+| Level | Definition | Action |
+|-------|------------|--------|
+| **CERTAIN** | Clear evidence in code/docs | Proceed |
+| **PROBABLE** | Strong inference, one piece missing | Note assumption, proceed |
+| **UNCERTAIN** | Multiple valid interpretations | Ask for clarification |
+| **UNKNOWN** | No basis for inference | Stop, escalate |
+
+**Usage:**
+```markdown
+[CONFIDENCE: PROBABLE] This uses JWT auth (inferred from middleware)
+[CONFIDENCE: UNCERTAIN] Not sure if this should be a service or repository
+```
+
 ### 4.5 Error Handling
 
 1. **Diagnose**: Analyze before fixing
 2. **Reproduce**: Create minimal failing test for bugs
 3. **Surface**: Don't mask errors
 4. **Escalate**: After 2 distinct failures, stop and ask
+
+**What counts as "distinct":**
+- ✅ **DISTINCT**: Different implementation strategy (different algorithm, different approach)
+- ❌ **NOT DISTINCT**: Same approach with minor variations (tweaking parameters, fixing typos)
+
+**Example:**
+- Try approach A → fails
+- Try approach B (completely different) → fails
+→ **ESCALATE** (2 distinct failures)
+
+**Example:**
+- Try approach A → fails
+- Fix typo in approach A → fails
+→ **NOT 2 distinct failures** — continue with approach A variations
 
 ---
 
@@ -175,11 +230,21 @@ When corrected by user (wrong pattern, hallucination, bad decision):
 - Security vulnerability discovered
 - Requirements are mutually exclusive
 
-**Security Discovery**: If you discover a potential vulnerability:
+**Security Severity Levels:**
+
+| Severity | Examples | Action |
+|----------|----------|--------|
+| **CRITICAL** | Auth bypass, SQL injection, XSS, data exposure | STOP immediately, warn user, wait for direction |
+| **HIGH** | Missing auth check, insecure config, secrets in code | STOP, plan fix, get approval |
+| **MEDIUM** | Info disclosure, weak crypto, verbose errors | Plan fix, include in next cycle |
+| **LOW** | Non-idiomatic code, tech debt | Note in PROGRESS.md |
+
+**Security Discovery Protocol:**
 1. **Stop** all related work immediately
-2. **Warn** with a clear WARNING block
-3. **Escalate** - notify user and wait for direction
-4. **Reproduce** - create failing test if safe to do so
+2. **Assess** severity using table above
+3. **Warn** with a clear WARNING block
+4. **Escalate** - notify user and wait for direction (CRITICAL/HIGH)
+5. **Reproduce** - create failing test if safe to do so
 
 **Emergency Override**: User says "EMERGENCY: [reason]" → bypass once, log in LESSONS.md, return to normal protocol.
 
@@ -202,27 +267,45 @@ When corrected by user (wrong pattern, hallucination, bad decision):
 
 ## 9. Priority Order (Conflict Resolution)
 
-1. System/Environment constraints
-2. Security & safety rules
-3. **AGENTS.md** (this document)
-4. Explicit user instructions
-5. Canonical project docs (PRD, TECH_STACK)
-6. Supporting guides
-7. Codebase reality (match existing)
+Priority (Highest to Lowest):
+1. **System/Environment Constraints**
+2. **Security & Safety Rules**
+3. **AGENTS.md** (This constitution)
+4. **Explicit User Instructions** (Latest wins unless violating 1-3)
+5. **Canonical Project Docs** (`TECH_STACK.md`, `PRD.md`)
+6. **Supporting Guides** (`/.agents/docs/*.md` excluding PRD & TECH_STACK — MUST NOT introduce MUST/REQUIRED constraints unless promoted into AGENTS.md)
+7. **Codebase Reality** (Match existing patterns)
 
-**Tie-breaker**: More specific beats general.
+**Conflict Resolution Matrix:**
+
+| If This Conflicts With... | Winner Is... | Why |
+|---------------------------|--------------|-----|
+| AGENTS.md vs PRODUCTION doc | Explicit user instruction | User has final authority |
+| TEMPLATE doc vs Code reality | Code reality | Don't change working code to match template |
+| GUIDELINES.md vs AGENTS.md | AGENTS.md | Constitution beats tutorial |
+| Security rule vs Feature request | Security rule | Non-negotiable |
+| Two PRODUCTION docs | More specific one | Context wins over general |
+
+**Tie-breaker**: More specific beats general. If still ambiguous, ask the user.
 
 ---
 
 ## 10. Verification Checklist
 
 Before marking complete:
-- [ ] Plan approved (if non-trivial)
-- [ ] Code matches existing style
-- [ ] Tests pass (reproduction test for bugs)
-- [ ] LSP diagnostics clean
-- [ ] No secrets or insecure patterns
-- [ ] PROGRESS.md updated
+- [ ] Plan explicitly approved (or AUTO-PILOT with confidence)
+- [ ] Code matches existing style & patterns
+- [ ] Tests added and passing (Reproduction test for bugs)
+- [ ] No secrets or insecure patterns introduced
+- [ ] Documentation updated (`PROGRESS.md`, `LESSONS.md` if corrected)
+- [ ] LSP diagnostics/Build are clean
+- [ ] All changes traceable to requirements
+
+### Domain-Specific Verification
+- [ ] **Backend changes**: Compared against `BACKEND.md` patterns
+- [ ] **Frontend changes**: Compared against `FRONTEND.md` patterns
+- [ ] **Security changes**: Severity assessed, appropriate action taken
+- [ ] **Lessons checked**: Reviewed `LESSONS.md` for related past errors
 
 ---
 
