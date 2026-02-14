@@ -57,6 +57,8 @@ Read additional docs based on task risk:
 
 **Rule**: Only `STATUS: PRODUCTION` docs are authoritative. If a needed doc is `TEMPLATE`, stop and ask: "Scaffold with project-specific info or proceed with safe defaults?"
 
+**Template Content**: Examples and fictional content must be labeled clearly. Never treat example content as real project history.
+
 ---
 
 ## 4. Execution Protocol
@@ -133,7 +135,19 @@ Plan must include:
 
 ---
 
-## 6. Escalation Protocol
+## 6. Self-Improvement Protocol
+
+When corrected by user (wrong pattern, hallucination, bad decision):
+
+1. **Acknowledge**: "I made an error: [specific mistake]"
+2. **Propose Rule**: Draft a precise rule to prevent recurrence
+3. **Suggest Location**: AGENTS.md §X or LESSONS.md
+4. **Wait for Approval**: Use Documentation Protocol (§5)
+5. **Update**: Once approved, update the document
+
+---
+
+## 7. Escalation Protocol
 
 **Stop and ask** when:
 - Blocked after 2 distinct approaches
@@ -142,11 +156,17 @@ Plan must include:
 - Security vulnerability discovered
 - Requirements are mutually exclusive
 
+**Security Discovery**: If you discover a potential vulnerability:
+1. **Stop** all related work immediately
+2. **Warn** with a clear WARNING block
+3. **Escalate** - notify user and wait for direction
+4. **Reproduce** - create failing test if safe to do so
+
 **Emergency Override**: User says "EMERGENCY: [reason]" → bypass once, log in LESSONS.md, return to normal protocol.
 
 ---
 
-## 7. Document Reference
+## 8. Document Reference
 
 | File | Purpose | When to Read |
 |------|---------|--------------|
@@ -161,7 +181,7 @@ Plan must include:
 
 ---
 
-## 8. Priority Order (Conflict Resolution)
+## 9. Priority Order (Conflict Resolution)
 
 1. System/Environment constraints
 2. Security & safety rules
@@ -175,7 +195,7 @@ Plan must include:
 
 ---
 
-## 9. Verification Checklist
+## 10. Verification Checklist
 
 Before marking complete:
 - [ ] Plan approved (if non-trivial)
