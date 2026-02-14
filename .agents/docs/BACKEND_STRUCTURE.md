@@ -55,6 +55,12 @@ async function createUser(req: Request, res: Response) {
 
 ## Security & Data Flow
 
-- **Secrets Management**: Never commit secrets to version control. Use environment variables or a secret management service.
-- **Input Validation**: Use a library like Zod or Joi to validate all incoming request data.
-- **Authentication/Authorization**: Ensure that all protected routes are properly authenticated and authorized based on user roles.
+> **AUTHORITATIVE SOURCE**: All security requirements are defined in `AGENTS.md` §7 (Defense-in-Depth Security).
+
+### Backend-Specific Patterns
+
+- **Secrets Management**: Use environment variables or secret management services (AWS Secrets Manager, HashiCorp Vault).
+- **Input Validation**: Validate all incoming request data using schema libraries (Zod, Joi, etc.).
+- **Authentication/Authorization**: Ensure protected routes are properly authenticated and authorized based on user roles.
+
+See `AGENTS.md` §7 for complete security requirements and vulnerability response protocols.

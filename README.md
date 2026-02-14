@@ -114,6 +114,7 @@ SESSION_MODE = STANDARD | AUTO-PILOT (set per session in PROGRESS.md)
 └──────────────────────────────────────────────────────────────────────────────┘
 {Read} [AGENTS.md]
   - authority model + conflict ladder (§1, §3)
+  - reasoning modes (§1.1)
   - risk-tier reading rules (§2)
   - workflow + approval gate (§4)
   - doc evolution protocol (§5)
@@ -123,6 +124,7 @@ SESSION_MODE = STANDARD | AUTO-PILOT (set per session in PROGRESS.md)
   - design principles & patterns (§8.1)
   - doc map (§9)
   - completion checklist (§10)
+  - context & resource management (§11)
 
 {Read} [/.agents/docs/PROGRESS.md]  (always; session carry-over)
 {Read} SESSION_APPROVAL_MODE (STANDARD | PLAN+DOC | ALL)
@@ -315,6 +317,8 @@ QUICK “WHICH DOC DO I USE?” MAP
 - Need the execution roadmap?              -> [/.agents/docs/PRD.md]
 - Need user journey + error handling UX?   -> [/.agents/docs/PRD.md]
 - Need design principles/architecture?     -> AGENTS.md §8.1
+- Need context window management?          -> AGENTS.md §11
+- Need reasoning mode guidance?            -> AGENTS.md §1.1
 - Need UI tokens/accessibility rules?      -> [/.agents/docs/FRONTEND_GUIDELINES.md]
 - Need frontend patterns/perf?             -> [/.agents/docs/FRONTEND_GUIDELINES.md]
 - Need backend layering/security patterns? -> [/.agents/docs/BACKEND_STRUCTURE.md]

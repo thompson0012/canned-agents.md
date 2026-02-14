@@ -85,3 +85,24 @@ const increment = () => setCount(prevCount => prevCount + 1);
 - **Root Cause**: AGENTS.md §8 had generic coding standards but no specific guidance on complexity control, architectural boundaries, or when to use design patterns.
 - **Rule to Prevent**: Reference concrete design principles (SOLID, separation of concerns, composition over inheritance) and pattern categories (Creational, Structural, Behavioral) when reviewing code. Apply the constraint: "No pattern unless it removes an existing pain."
 - **Example**: "When reviewing a new feature, check: Does this violate SRP? Are dependencies pointing inward (domain at center)? Is there premature abstraction (YAGNI violation)?"
+
+## Pattern: Security Documentation Consolidation
+
+- **Mistake / Issue**: Security guidance was duplicated across TECH_STACK.md, BACKEND_STRUCTURE.md, and AGENTS.md, leading to inconsistency and maintenance overhead.
+- **Root Cause**: No single authoritative source was designated for security requirements.
+- **Rule to Prevent**: Designate one document as the single source of truth for each concern. Reference it from other docs rather than duplicating content. Mark clearly: **"AUTHORITATIVE SOURCE: See AGENTS.md §X for complete requirements."
+- **Example**: Consolidated all security rules into AGENTS.md §7. TECH_STACK.md and BACKEND_STRUCTURE.md now reference AGENTS.md §7 with only stack-specific implementation examples.
+
+## Pattern: Context Window Management
+
+- **Mistake / Issue**: Agents exceeded context window limits or wasted tokens on irrelevant files, causing truncated responses or lost context.
+- **Root Cause**: No explicit guidelines for efficient context usage, summarization, or pruning.
+- **Rule to Prevent**: Follow AGENTS.md §11 guidelines: use grep before full reads for large files, summarize after reading >5 files, prune old session logs, and use LSP tools over full-file reads for navigation.
+- **Example**: "Instead of reading a 500-line file, use `grep` to find the specific function, then use `lsp_goto_definition` to navigate precisely."
+
+## Pattern: Missing Plans Directory
+
+- **Mistake / Issue**: GUIDELINES.md referenced `/.agents/docs/plans/` for durable task tracking, but the directory didn't exist in the template, causing confusion for new projects.
+- **Root Cause**: Template scaffolding was incomplete; referenced directories weren't created.
+- **Rule to Prevent**: When documenting directory structures, ensure the template includes `.gitkeep` files for all referenced directories so they're created on project initialization.
+- **Example**: Added `template/.agents/docs/plans/.gitkeep` to ensure the plans directory exists when users copy the template.
