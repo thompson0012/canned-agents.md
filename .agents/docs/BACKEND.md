@@ -1,4 +1,4 @@
-# BACKEND_STRUCTURE.md
+# BACKEND.md
 
 > **Status**: TEMPLATE  
 > **Last Updated**: YYYY-MM-DD
@@ -20,11 +20,52 @@ Backend architecture and API patterns.
 
 ## Architecture Overview
 
+```
+┌─────────────────────────────────────────────────────────────┐
+│                         CLIENT                               │
+│  (Web App / Mobile / API Consumer)                          │
+└──────────────────────┬──────────────────────────────────────┘
+                       │ HTTP Request
+                       ▼
+┌─────────────────────────────────────────────────────────────┐
+│                       ROUTES                                 │
+│  • Validate input (schema)                                  │
+│  • Authenticate/Authorize                                   │
+│  • Call services                                            │
+│  • Format response                                          │
+└──────────────────────┬──────────────────────────────────────┘
+                       │
+                       ▼
+┌─────────────────────────────────────────────────────────────┐
+│                      SERVICES                                │
+│  • Business logic                                           │
+│  • Orchestrate repositories                                 │
+│  • Domain rules                                             │
+│  • No HTTP, no direct DB                                    │
+└──────────────────────┬──────────────────────────────────────┘
+                       │
+                       ▼
+┌─────────────────────────────────────────────────────────────┐
+│                   REPOSITORIES                               │
+│  • Database queries                                         │
+│  • Data access only                                         │
+│  • Return domain models                                     │
+└──────────────────────┬──────────────────────────────────────┘
+                       │
+                       ▼
+┌─────────────────────────────────────────────────────────────┐
+│                      DATABASE                                │
+│  • PostgreSQL / MongoDB / etc                               │
+└─────────────────────────────────────────────────────────────┘
+```
+
+**Flow:** Routes → Services → Repositories → Database
+
 [One sentence what this backend does]
 
 ### Layer Structure
 ```
-[Your actual structure here]
+[Your actual folder structure here]
 ```
 
 ---

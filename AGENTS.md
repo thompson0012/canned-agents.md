@@ -117,6 +117,7 @@ Plan must include:
 | User corrects you | Log lesson in LESSONS.md |
 | Docs need changing | Propose → Approve → Update |
 | Template→Production | Fill templates with project info |
+| **Code changes patterns** | **Update FRONTEND.md or BACKEND.md** |
 
 ### 5.2 Update Process
 
