@@ -13,7 +13,6 @@ Battle-tested configuration for AI coding agents.
 | `/.agents/docs/PROGRESS.md` | Session state (template) | Update each session |
 | `/.agents/docs/LESSONS.md` | Learned patterns (template) | Log corrections here |
 | `/.agents/docs/MEMORY.md` | Architectural decisions (template) | Fill per project |
-| `/.agents/skills/self-cognitive/SKILL.md` | Self-cognitive meta skill | Use for verification/retrospectives; includes iterative “revolve” loop |
 
 **Domain-Specific** (fill based on GUIDELINES.md Part 3):
 - `/.agents/docs/BACKEND.md` — Backend patterns
