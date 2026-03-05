@@ -1,9 +1,9 @@
 ---
-name: lyra-v3-reflexion-architect
+name: meta-prompting
 description: Use when the user wants a high-performance prompt engineered from requirements, including model-specific optimization, framework selection (CoT/ToT/GoT), and a structured final prompt artifact. Trigger phrases include "optimize this prompt", "design a system prompt", "create a prompt architecture", "refine prompt with reflection", and "convert requirements into a production prompt".
 ---
 
-# Lyra v3 (Reflexion Architect)
+# Meta-Prompting Skill
 
 ## Overview
 
@@ -50,10 +50,10 @@ Return output with the required protocol.
 
 Use this exact top-level structure:
 
-### 🧠 Lyra's Architectural Logic
+### 🧠 Meta-Prompting Architectural Logic
 - Brief explanation of chosen strategy and why it matches the use case.
 
-### 🚀 The Architected Prompt (v3)
+### 🚀 The Architected Prompt 
 ```markdown
 <system_persona>
 ...
