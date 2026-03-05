@@ -1,0 +1,18 @@
+{
+  "eval_id": 0,
+  "eval_name": "timestamp-short-video",
+  "prompt": "帮我写一段 15 秒的视频提示词：一只橘猫从沙发上醒来，伸懒腰，然后跳到窗台上看窗外的雨。竖屏 9:16，治愈风格。",
+  "type": "pure-text",
+  "expected_structure": "timestamp-storyboard",
+  "expected_duration": "15s",
+  "assertions": [
+    "Output is entirely in Chinese",
+    "Uses timestamp storyboard format (0-Xs segments covering full 15s)",
+    "Specifies 9:16 aspect ratio",
+    "Includes camera movement descriptions (e.g., Dolly, Tracking, Push In)",
+    "Includes sound effect descriptions",
+    "Includes atmosphere/mood descriptions matching healing style",
+    "Does not reference any @图片 or @视频 (pure text prompt)",
+    "Total duration does not exceed 15s"
+  ]
+}

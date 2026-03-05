@@ -1,0 +1,19 @@
+{
+  "eval_id": 1,
+  "eval_name": "multimodal-product-ad",
+  "prompt": "我有一张产品图（一款白色陶瓷咖啡杯），想做一个 10 秒的产品展示广告。需要从纯黑背景中旋转出场，展示杯身纹理细节，最后杯中倒入热咖啡冒出蒸汽。横屏 16:9，极简高级感。产品正面图作为 @图片1，杯身纹理细节图作为 @图片2。",
+  "type": "multimodal",
+  "expected_structure": "basic",
+  "expected_duration": "10s",
+  "assertions": [
+    "Output is entirely in Chinese",
+    "Correctly references @图片1 and @图片2 with proper usage",
+    "Uses basic structure (<=12s) not timestamp storyboard",
+    "Specifies 16:9 aspect ratio",
+    "Includes Orbit or rotation camera movement for product showcase",
+    "Includes Zoom In for texture detail",
+    "Includes material reference list mapping @图片N to asset descriptions",
+    "Total referenced files <= 12",
+    "Does not include realistic human face content"
+  ]
+}

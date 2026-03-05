@@ -1,0 +1,20 @@
+{
+  "eval_id": 2,
+  "eval_name": "long-video-segmented",
+  "prompt": "帮我做一段 30 秒的视频：一个宇航员漂浮在空间站内，透过舷窗看到地球日出。前半段是空间站内的失重环境，后半段是地球日出的壮观景象。横屏 2.35:1，科幻史诗风格，8K品质。",
+  "type": "segmented-long",
+  "expected_structure": "multi-segment",
+  "expected_duration": "30s",
+  "assertions": [
+    "Output is entirely in Chinese",
+    "Splits into exactly 2 segments (segment 1: <=15s normal generation, segment 2: video extension)",
+    "Segment 2 uses '将@视频1延长' pattern for video extension",
+    "Each segment includes timestamp storyboard format",
+    "Includes connection point description between segments",
+    "Uses epic/cinematic structure with quality anchoring (品质锚定)",
+    "Specifies 2.35:1 aspect ratio",
+    "Includes atmosphere coherence statement (大气连贯声明)",
+    "Includes light/shadow descriptions",
+    "Total combined duration approximately 30s"
+  ]
+}
