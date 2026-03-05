@@ -7,7 +7,7 @@
       "id": 0,
       "name": "timestamp-short-video",
       "type": "pure-text",
-      "prompt": "帮我写一段 15 秒的视频提示词：一只橘猫从沙发上醒来，伸懒腰，然后跳到窗台上看窗外的雨。竖屏 9:16，治愈风格。",
+      "prompt": "帮我写一段 15 秒的视频提示词，使用时间戳分镜法：一只橘猫从沙发上醒来，伸懒腰，然后跳到窗台上看窗外的雨。竖屏 9:16，治愈风格。格式示例：0-3秒：[画面 + 镜头]；4-8秒：[画面 + 镜头]...",
       "notes": "Tests pure-text generation with timestamp storyboard structure for a 15s video. Should produce time-segmented prompt with camera movements, sound effects, and atmosphere."
     },
     {
