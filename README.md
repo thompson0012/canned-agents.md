@@ -122,21 +122,14 @@ LESSONS.md ◄──► Log when corrected
             │  │ behavior     │  │                      No
             │  └──────────────┘  │                       │
             └────────────────────┘                       ▼
-                                               ┌─────────────────┐
-                                               │   CREATE PLAN   │
-                                               │  - Goal/Scope   │
-                                               │  - Tasks        │
-                                               │  - Risks        │
-                                               └────────┬────────┘
-                                                        │
-                                                        ▼
-                                               ┌─────────────────┐
-                                               │  AWAIT APPROVAL │
-                                               │ (unless AUTO-   │
-                                               │  PILOT mode)    │
-                                               └────────┬────────┘
-                                                        │
-                                                        ▼
+                                                ┌─────────────────┐
+                                                │   CREATE PLAN   │
+                                                │  - Goal/Scope   │
+                                                │  - Tasks        │
+                                                │  - Risks        │
+                                                └────────┬────────┘
+                                                         │
+                                                         ▼
 ┌───────────────────────────────────────────────────────┴──────┐
 │                         EXECUTE                             │
 │  ┌─────────────┐    ┌─────────────┐    ┌─────────────────┐  │
@@ -170,7 +163,7 @@ AGENTS.md → PROGRESS.md → [Tier-based docs]
 ## Key Concepts
 
 - **Lazy Reading**: Read only what you need (tier-based)
-- **Explicit Approval**: Plans need approval (unless AUTO-PILOT)
+- **Default Proceed**: Agent acts autonomously; asks only when constitution is unclear or action is safety-critical (security, destructive, production/billing)
 - **Template→Production**: Fill templates before relying on them
 - **AGENTS.md First**: Always check constitution before other docs
 - **GUIDELINES.md Teaches**: It's a tutorial, not just reference — explains HOW to think and write
