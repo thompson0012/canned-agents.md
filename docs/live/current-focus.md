@@ -4,30 +4,22 @@ Read after `AGENTS.md` when starting or resuming work. Keep this file limited to
 
 ## Objective
 
-State the single current objective in 1-2 sentences.
-
-Task 7 final verification and limited polish for the rewritten minimal docs kit are complete.
+Rewrite the `future-catcher` skill so it operates as a direct war-game, tabletop exercise, and business scenario-planning framework rather than a philosophical futurism prompt.
 
 ## Scope
 
-List only the files and outcomes included in the current objective.
-
-- Confirm the rewritten root and template docs still match the intended minimal structure.
-- Record the limited `README.md` and `degit.json` polish applied to finish the rewrite.
+- Update `templates/base/.agents/skills/future-catcher/SKILL.md` to emphasize signal detection, strategic hinges, scenarios, actor reactions, higher-order effects, and decision support.
+- Keep the skill concise, trigger-friendly, and oriented toward real strategic analysis of new developments.
 
 ## Constraints
 
-Record limits that must remain true while executing the current objective.
-
-- Scope remained limited to Task 7 from `docs/plans/2026-03-09-repo-rewrite.md`.
-- Keep the language concise and aligned to the approved minimal architecture.
-- Do not reopen broader repo cleanup beyond the final verification/polish scope.
+- Keep the skill direct and operational; avoid manifesto-style or poetic framing.
+- Preserve the `future-catcher` identity while changing its method.
+- Limit work to the skill rewrite and the live-state docs for this objective.
 - Do not commit from this task.
 
 ## Success Criteria
 
-List the checks that indicate the current objective is done.
-
-- Final verification confirms the required root and template paths still exist, and the recorded worktree state is described without overstating unrelated remaining changes.
-- `README.md`, `degit.json`, and `.gitignore` are aligned with the rewritten kit.
-- The live docs reflect Task 7 completion and capture the verification outcome.
+- The skill description clearly triggers on scenario planning, war-gaming, and implication analysis requests.
+- The skill body gives a concrete analysis workflow with base/upside/failure scenarios, stakeholder reactions, risks, indicators, and strategic takeaways.
+- The live docs record the rewrite and its verification state.

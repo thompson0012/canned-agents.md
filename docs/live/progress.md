@@ -4,15 +4,11 @@ Read after `docs/live/current-focus.md` to recover the latest state, continuity,
 
 ## Current State
 
-Summarize the current repo or task state in 1-2 sentences.
-
-The rewrite content is in place and Task 7 polish is complete. Final verification confirmed the required files and README positioning, while `git status --short` still shows other remaining rewrite-related changes outside this narrow polish pass.
+The `future-catcher` skill has been rewritten around scenario planning and war-gaming. The repo now contains a direct, decision-oriented version of the skill instead of the earlier philosophical framing.
 
 ## Latest Completed Work
 
-Record the latest finished work and why it matters.
-
-Completed Task 7 by tightening `README.md` around the recommended `templates/base` initialization flow, keeping `degit.json` as a secondary repo-level cleanup detail, and recording the verification results precisely.
+Reframed `templates/base/.agents/skills/future-catcher/SKILL.md` into a strategic foresight workflow centered on signal detection, strategic hinges, base/upside/failure scenarios, stakeholder reactions, higher-order effects, bottlenecks, indicators, and actionable takeaways.
 
 ## In Progress
 
@@ -28,29 +24,19 @@ None.
 
 ## Next Recommended Action
 
-State the single best next step.
-
-Start the next session from `AGENTS.md`, then update live-state docs only when a new objective is chosen.
+Run 2-3 representative prompts against the rewritten `future-catcher` skill and tighten any wording that still produces vague or overly broad analysis.
 
 ## Touched Files
 
-List only the files changed or intentionally reviewed for the latest work.
-
-- `README.md`
-- `degit.json`
-- `.gitignore`
+- `templates/base/.agents/skills/future-catcher/SKILL.md`
 - `docs/live/current-focus.md`
 - `docs/live/progress.md`
 - `docs/live/todo.md`
 
 ## Verification Status
 
-Record the latest relevant checks and their outcome.
-
-`git status --short` still shows additional rewrite-related changes, including modified retained skill files, so Task 7 verification is recorded without claiming a fully narrowed worktree. Required-file existence check returned `missing []`. `README.md` now frames `templates/base` as the primary initialization path, and `degit.json` is documented narrowly as a secondary repo-level cleanup detail. `.gitignore` required no change.
+Re-read the rewritten skill to confirm the new description, workflow, and output format are aligned with war-gaming and scenario planning. `git status --short` shows the intended modification to `templates/base/.agents/skills/future-catcher/SKILL.md`.
 
 ## Hand-off Note
 
-Leave the minimum context needed for the next session.
-
-Start with `AGENTS.md`, then `docs/live/current-focus.md`, then `docs/live/progress.md`. The rewrite is complete; choose the next objective before updating live-state docs again.
+Start with `AGENTS.md`, then `docs/live/current-focus.md`, then `docs/live/progress.md`. If more optimization is needed, validate the skill with concrete scenario prompts rather than adding more philosophy.

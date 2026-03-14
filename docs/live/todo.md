@@ -8,7 +8,5 @@ Use one row per work item. Prefer `High`, `Medium`, or `Low` for priority and `P
 
 | Task | Priority | Status |
 | --- | --- | --- |
-| Task 4: expand the durable reference docs | High | Completed |
-| Task 5: mirror the structure into initialization templates | High | Completed |
-| Task 6: remove obsolete framework files and simplify repo messaging | High | Completed |
-| Task 7: final verification and limited polish | High | Completed |
+| Task 8: rewrite the future-catcher skill for scenario planning | High | Completed |
+| Task 9: evaluate future-catcher with representative prompts | Medium | Pending |
